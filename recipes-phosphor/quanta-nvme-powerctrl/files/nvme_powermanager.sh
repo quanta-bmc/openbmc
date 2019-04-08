@@ -67,7 +67,7 @@ do
     if [ "${U2_PRESENT_STATUS[$1]}" != read ];then
         update_u2_status $i "${U2_PRESENT[$i]}"
         read_present_set_related_power $i "${POWER_U2[$i]}"
-        check_present_and_powergood $i "${U2_PRESENT[$i]}" "${POWER_U2[$i]}"
+        check_present_and_powergood $i "${U2_PRESENT[$i]}" "${PWRGD_U2[$i]}"
     fi 
   done
 done
