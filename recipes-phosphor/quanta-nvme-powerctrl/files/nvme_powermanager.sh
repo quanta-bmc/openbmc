@@ -50,10 +50,8 @@ function recovery_pwrgd(){
         pwrgd=$(cat /sys/class/gpio/gpio$3/value)
         if [ "$present" -eq "$pwrgd" ];then
             #set fault led
-            busctl set-property xyz.openbmc_project.LED.GroupManager /xyz/openbmc_project/led/groups/led\_u2\_$1\_fault xyz.openbmc_project.Led.Group Asserted b true
             set_gpio_direction $4 "low"
         else
-            busctl set-property xyz.openbmc_project.LED.GroupManager /xyz/openbmc_project/led/groups/led\_u2\_$1\_fault xyz.openbmc_project.Led.Group Asserted b false
             sleep 0.1
             set_gpio_direction $4 "high"
         fi
@@ -69,23 +67,11 @@ function check_present_and_powergood(){
     echo "U2 $i present is ${present} and powergood is ${pwrgd}"
     path=`expr $1`
     if [ "$present" -eq 0 ] && [ "$pwrgd" -eq 1 ];then
-        busctl set-property xyz.openbmc_project.nvme.manager /xyz/openbmc_project/nvme/$path xyz.openbmc_project.Inventory.Item Present b true
         sleep 0.1
         set_gpio_direction $4 "high"
-    else        
-        busctl set-property xyz.openbmc_project.nvme.manager /xyz/openbmc_project/nvme/$path xyz.openbmc_project.Inventory.Item Present b false
-            if [ "$present" -eq "$pwrgd" ];then
-                #set fault led
-                busctl set-property xyz.openbmc_project.LED.GroupManager /xyz/openbmc_project/led/groups/led\_u2\_$1\_fault xyz.openbmc_project.Led.Group Asserted b true
-                set_gpio_direction $4 "low"
-            else
-                busctl set-property xyz.openbmc_project.LED.GroupManager /xyz/openbmc_project/led/groups/led\_u2\_$1\_fault xyz.openbmc_project.Led.Group Asserted b false
-                set_gpio_direction $4 "low"
-            fi
-        
+    else
+        set_gpio_direction $4 "low"
     fi
-    
-
 }
 
 ##Initial U2 present status
@@ -110,7 +96,6 @@ do
         echo "Update present status"
         update_u2_direct $i "$read"
         read_present_set_related_power $i "${POWER_U2[$i]}"
-        #check_present_and_powergood $i "${U2_PRESENT[$i]}" "${PWRGD_U2[$i]}"
         check_present_and_powergood $i $read "${PWRGD_U2[$i]}" "${RST_BMC_U2[$i]}"
     fi 
   done
