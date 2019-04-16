@@ -1,5 +1,6 @@
 [Unit]
 Description=Phosphor-Pid-Control Fan Control Daemon
+After=xyz.openbmc_project.nvme.manager.service
 
 [Service]
 Restart=always
