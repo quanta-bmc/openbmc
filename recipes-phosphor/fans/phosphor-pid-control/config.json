@@ -87,7 +87,7 @@
         {
             "name": "nvme/0",
             "type": "temp",
-            "readPath": "/xyz/openbmc_project/temperature/nvme/0",
+            "readPath": "/xyz/openbmc_project/nvme/0",
             "writePath": "",
             "min": 0,
             "max": 0,
