@@ -12,13 +12,13 @@ MAX_FAN_PWM=3
 
 def printUsage():
   print 'Usage:'
-  print 'pwm_tacho -l                          : List Fan Speed Table and Fan Duty Table'
-  print 'pwm_tacho -f FanModuleNum[1-6] -d duty: Set Duty for individual fan module'
-  print 'pwm_tacho -f FanModuleNum[1-6] -r     : Get Duty for individual fan module'
-  print 'pwm_tacho -a -d duty                  : Set Duty for all fan modules'
-  print 'pwm_tacho -a -r                       : Get Duty for all fan modules'
-  print 'pwm_tacho -f FanNum[1-6] -g           : Get Fan Speed for individual fan'
-  print 'pwm_tacho -a -g                       : Get Fan Speed for all fans'
+  print 'pwm_tacho.py -l                          : List Fan Speed Table and Fan Duty Table'
+  print 'pwm_tacho.py -f FanModuleNum[1-3] -d duty: Set Duty for individual fan module'
+  print 'pwm_tacho.py -f FanModuleNum[1-3] -r     : Get Duty for individual fan module'
+  print 'pwm_tacho.py -a -d duty                  : Set Duty for all fan modules'
+  print 'pwm_tacho.py -a -r                       : Get Duty for all fan modules'
+  print 'pwm_tacho.py -f FanNum[1-6] -g           : Get Fan Speed for individual fan'
+  print 'pwm_tacho.py -a -g                       : Get Fan Speed for all fans'
 
   exit(1)
 
