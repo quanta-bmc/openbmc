@@ -1,5 +1,6 @@
 [Unit]
 Description=NVMe management
+After=nvme_gpio.service
 
 [Service]
 ExecStart=/usr/sbin/nvme_main
