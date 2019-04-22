@@ -85,72 +85,72 @@
             "timeout": 0
         },
         {
-            "name": "nvme/0",
+            "name": "nvme0",
             "type": "temp",
-            "readPath": "/xyz/openbmc_project/nvme/0",
+            "readPath": "/xyz/openbmc_project/sensors/temperature/nvme0",
             "writePath": "",
             "min": 0,
             "max": 0,
             "timeout": 0
         },
         {
-            "name": "nvme/1",
+            "name": "nvme1",
             "type": "temp",
-            "readPath": "/xyz/openbmc_project/nvme/1",
+            "readPath": "/xyz/openbmc_project/sensors/temperature/nvme1",
             "writePath": "",
             "min": 0,
             "max": 0,
             "timeout": 0
         },
         {
-            "name": "nvme/2",
+            "name": "nvme2",
             "type": "temp",
-            "readPath": "/xyz/openbmc_project/nvme/2",
+            "readPath": "/xyz/openbmc_project/sensors/temperature/nvme2",
             "writePath": "",
             "min": 0,
             "max": 0,
             "timeout": 0
         },
         {
-            "name": "nvme/3",
+            "name": "nvme3",
             "type": "temp",
-            "readPath": "/xyz/openbmc_project/nvme/3",
+            "readPath": "/xyz/openbmc_project/sensors/temperature/nvme3",
             "writePath": "",
             "min": 0,
             "max": 0,
             "timeout": 0
         },
         {
-            "name": "nvme/4",
+            "name": "nvme4",
             "type": "temp",
-            "readPath": "/xyz/openbmc_project/nvme/4",
+            "readPath": "/xyz/openbmc_project/sensors/temperature/nvme4",
             "writePath": "",
             "min": 0,
             "max": 0,
             "timeout": 0
         },
         {
-            "name": "nvme/5",
+            "name": "nvme5",
             "type": "temp",
-            "readPath": "/xyz/openbmc_project/nvme/5",
+            "readPath": "/xyz/openbmc_project/sensors/temperature/nvme5",
             "writePath": "",
             "min": 0,
             "max": 0,
             "timeout": 0
         },
         {
-            "name": "nvme/6",
+            "name": "nvme6",
             "type": "temp",
-            "readPath": "/xyz/openbmc_project/nvme/6",
+            "readPath": "/xyz/openbmc_project/sensors/temperature/nvme6",
             "writePath": "",
             "min": 0,
             "max": 0,
             "timeout": 0
         },
         {
-            "name": "nvme/7",
+            "name": "nvme7",
             "type": "temp",
-            "readPath": "/xyz/openbmc_project/nvme/7",
+            "readPath": "/xyz/openbmc_project/sensors/temperature/nvme7",
             "writePath": "",
             "min": 0,
             "max": 0,
@@ -287,9 +287,9 @@
                     }
                 },
                 {
-                    "name": "nvme/0",
+                    "name": "nvme0",
                     "type": "temp",
-                    "inputs": ["nvme/0"],
+                    "inputs": ["nvme0"],
                     "setpoint": 66.0,                                                                  
                     "pid": {                                                                           
                         "samplePeriod": 1.0,                                                           
@@ -308,9 +308,9 @@
                     }                                                    
                 },
                 {
-                    "name": "nvme/1",
+                    "name": "nvme1",
                     "type": "temp",
-                    "inputs": ["nvme/1"],
+                    "inputs": ["nvme1"],
                     "setpoint": 66.0,                                                                  
                     "pid": {                                                                           
                         "samplePeriod": 1.0,                                                           
@@ -329,9 +329,9 @@
                     }                                                    
                 },
                 {
-                    "name": "nvme/2",
+                    "name": "nvme2",
                     "type": "temp",
-                    "inputs": ["nvme/2"],
+                    "inputs": ["nvme2"],
                     "setpoint": 66.0,                                                                  
                     "pid": {                                                                           
                         "samplePeriod": 1.0,                                                           
@@ -350,9 +350,9 @@
                     }                                                    
                 },
                 {
-                    "name": "nvme/3",
+                    "name": "nvme3",
                     "type": "temp",
-                    "inputs": ["nvme/3"],
+                    "inputs": ["nvme3"],
                     "setpoint": 66.0,                                                                  
                     "pid": {                                                                           
                         "samplePeriod": 1.0,                                                           
@@ -371,9 +371,9 @@
                     }                                                    
                 },
                 {
-                    "name": "nvme/4",
+                    "name": "nvme4",
                     "type": "temp",
-                    "inputs": ["nvme/4"],
+                    "inputs": ["nvme4"],
                     "setpoint": 66.0,                                                                  
                     "pid": {                                                                           
                         "samplePeriod": 1.0,                                                           
@@ -392,9 +392,9 @@
                     }                                                    
                 },
                 {
-                    "name": "nvme/5",
+                    "name": "nvme5",
                     "type": "temp",
-                    "inputs": ["nvme/5"],
+                    "inputs": ["nvme5"],
                     "setpoint": 66.0,                                                                  
                     "pid": {                                                                           
                         "samplePeriod": 1.0,                                                           
@@ -413,9 +413,9 @@
                     }                                                    
                 },
                 {
-                    "name": "nvme/6",
+                    "name": "nvme6",
                     "type": "temp",
-                    "inputs": ["nvme/6"],
+                    "inputs": ["nvme6"],
                     "setpoint": 66.0,                                                                  
                     "pid": {                                                                           
                         "samplePeriod": 1.0,                                                           
@@ -434,9 +434,9 @@
                     }                                                    
                 },
                 {
-                    "name": "nvme/7",
+                    "name": "nvme7",
                     "type": "temp",
-                    "inputs": ["nvme/7"],
+                    "inputs": ["nvme7"],
                     "setpoint": 66.0,                                                                  
                     "pid": {                                                                           
                         "samplePeriod": 1.0,                                                           
@@ -700,9 +700,9 @@
                     }
                 },
                 {
-                    "name": "nvme/0",
+                    "name": "nvme0",
                     "type": "stepwise",
-                    "inputs": ["nvme/0"],
+                    "inputs": ["nvme0"],
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
@@ -756,9 +756,9 @@
                     }
                 },
                 {
-                    "name": "nvme/1",
+                    "name": "nvme1",
                     "type": "stepwise",
-                    "inputs": ["nvme/1"],
+                    "inputs": ["nvme1"],
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
@@ -812,9 +812,9 @@
                     }
                 },
                 {
-                    "name": "nvme/2",
+                    "name": "nvme2",
                     "type": "stepwise",
-                    "inputs": ["nvme/2"],
+                    "inputs": ["nvme2"],
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
@@ -868,9 +868,9 @@
                     }
                 },
                 {
-                    "name": "nvme/3",
+                    "name": "nvme3",
                     "type": "stepwise",
-                    "inputs": ["nvme/3"],
+                    "inputs": ["nvme3"],
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
@@ -924,9 +924,9 @@
                     }
                 },
                 {
-                    "name": "nvme/4",
+                    "name": "nvme4",
                     "type": "stepwise",
-                    "inputs": ["nvme/4"],
+                    "inputs": ["nvme4"],
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
@@ -980,9 +980,9 @@
                     }
                 },
                 {
-                    "name": "nvme/5",
+                    "name": "nvme5",
                     "type": "stepwise",
-                    "inputs": ["nvme/5"],
+                    "inputs": ["nvme5"],
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
@@ -1036,9 +1036,9 @@
                     }
                 },
                 {
-                    "name": "nvme/6",
+                    "name": "nvme6",
                     "type": "stepwise",
-                    "inputs": ["nvme/6"],
+                    "inputs": ["nvme6"],
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
@@ -1092,9 +1092,9 @@
                     }
                 },
                 {
-                    "name": "nvme/7",
+                    "name": "nvme7",
                     "type": "stepwise",
-                    "inputs": ["nvme/7"],
+                    "inputs": ["nvme7"],
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
