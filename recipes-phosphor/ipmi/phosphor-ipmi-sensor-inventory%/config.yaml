@@ -369,12 +369,12 @@
   entityID: 0x07
   entityInstance: 1
   sensorType: 0x01
-  path: /xyz/openbmc_project/nvme/0
+  path: /xyz/openbmc_project/sensors/temperature/nvme0
   sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
-  sensorNamePattern: nameParentLeaf
+  sensorNamePattern: nameLeaf
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -386,12 +386,12 @@
   entityID: 0x07
   entityInstance: 2
   sensorType: 0x01
-  path: /xyz/openbmc_project/nvme/1
+  path: /xyz/openbmc_project/sensors/temperature/nvme1
   sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
-  sensorNamePattern: nameParentLeaf
+  sensorNamePattern: nameLeaf
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -403,12 +403,12 @@
   entityID: 0x07
   entityInstance: 3
   sensorType: 0x01
-  path: /xyz/openbmc_project/nvme/2
+  path: /xyz/openbmc_project/sensors/temperature/nvme2
   sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
-  sensorNamePattern: nameParentLeaf
+  sensorNamePattern: nameLeaf
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -420,12 +420,12 @@
   entityID: 0x07
   entityInstance: 4
   sensorType: 0x01
-  path: /xyz/openbmc_project/nvme/3
+  path: /xyz/openbmc_project/sensors/temperature/nvme3
   sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
-  sensorNamePattern: nameParentLeaf
+  sensorNamePattern: nameLeaf
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -437,12 +437,12 @@
   entityID: 0x07
   entityInstance: 5
   sensorType: 0x01
-  path: /xyz/openbmc_project/nvme/4
+  path: /xyz/openbmc_project/sensors/temperature/nvme4
   sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
-  sensorNamePattern: nameParentLeaf
+  sensorNamePattern: nameLeaf
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -454,12 +454,12 @@
   entityID: 0x07
   entityInstance: 6
   sensorType: 0x01
-  path: /xyz/openbmc_project/nvme/5
+  path: /xyz/openbmc_project/sensors/temperature/nvme5
   sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
-  sensorNamePattern: nameParentLeaf
+  sensorNamePattern: nameLeaf
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -471,12 +471,12 @@
   entityID: 0x07
   entityInstance: 7
   sensorType: 0x01
-  path: /xyz/openbmc_project/nvme/6
+  path: /xyz/openbmc_project/sensors/temperature/nvme6
   sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
-  sensorNamePattern: nameParentLeaf
+  sensorNamePattern: nameLeaf
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -488,12 +488,12 @@
   entityID: 0x07
   entityInstance: 8
   sensorType: 0x01
-  path: /xyz/openbmc_project/nvme/7
+  path: /xyz/openbmc_project/sensors/temperature/nvme7
   sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
-  sensorNamePattern: nameParentLeaf
+  sensorNamePattern: nameLeaf
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
