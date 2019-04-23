@@ -506,7 +506,7 @@
   entityID: 0x20
   entityInstance: 1
   sensorType: 0x0C
-  path: /xyz/openbmc_project/memory/BmcECC
+  path: /xyz/openbmc_project/metrics/memory/BmcECC
   sensorReadingType: 0x6F
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: assertion
