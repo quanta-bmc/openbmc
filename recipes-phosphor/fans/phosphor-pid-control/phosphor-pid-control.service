@@ -4,7 +4,7 @@ After=xyz.openbmc_project.nvme.manager.service
 
 [Service]
 Restart=always
-ExecStart={sbindir}/swampd
+ExecStart={bindir}/swampd
 RestartSec=5
 StartLimitInterval=0
 Type=simple
