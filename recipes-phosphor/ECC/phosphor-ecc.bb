@@ -6,14 +6,14 @@ S = "${WORKDIR}/git"
 inherit autotools pkgconfig
 inherit obmc-phosphor-dbus-service obmc-phosphor-systemd
 
-HASHSTYLE = "gnu" 
-CXXFLAGS += "-std=c++17"  
+HASHSTYLE = "gnu"
+CXXFLAGS += "-std=c++17"
 
 DEPENDS += "sdbusplus"
 DEPENDS += "phosphor-dbus-interfaces"
 DEPENDS += "sdeventplus"
 DEPENDS += "phosphor-logging"
-DEPENDS += "sdbusplus-native" 
+DEPENDS += "sdbusplus-native"
 DEPENDS += "autoconf-archive-native"
 DEPENDS += "phosphor-sel-logger"
 
