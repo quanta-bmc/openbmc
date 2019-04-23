@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${QUANTABASE}/COPYING.apache-2.0;md5=34400b68072d710f
 
 FILESEXTRAPATHS_append := "${THISDIR}/files:"
 
-inherit systemd
+inherit systemd obmc-phosphor-systemd
 
 DEPENDS += "systemd"
 RDEPENDS_${PN} += "libsystemd"
