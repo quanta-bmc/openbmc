@@ -669,3 +669,164 @@
           0x05:
             type: string
             assert: xyz.openbmc_project.Memory.MemoryECC.ECCStatus.LogFull
+
+0x62:
+  entityID: 0x0A
+  entityInstance: 7
+  sensorType: 0x02
+  path: /xyz/openbmc_project/sensors/voltage/P3V3_STBY_Vol
+  sensorReadingType: 0x01
+  multiplierM: 156
+  offsetB: 0
+  bExp: 0
+  rExp: -4
+  scale: -3
+  mutability: Mutability::Write|Mutability::Read
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  sensorNamePattern: nameLeaf
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: int64_t
+
+0x64:
+  entityID: 0x0A
+  entityInstance: 8
+  sensorType: 0x02
+  path: /xyz/openbmc_project/sensors/voltage/P2V5_BMC_Vol
+  sensorReadingType: 0x01
+  multiplierM: 117
+  offsetB: 0
+  bExp: 0
+  rExp: -4
+  scale: -3
+  mutability: Mutability::Write|Mutability::Read
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  sensorNamePattern: nameLeaf
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: int64_t
+
+0x65:
+  entityID: 0x0A
+  entityInstance: 9
+  sensorType: 0x02
+  path: /xyz/openbmc_project/sensors/voltage/P1V8_BMC_Vol
+  sensorReadingType: 0x01
+  multiplierM: 78
+  offsetB: 0
+  bExp: 0
+  rExp: -4
+  scale: -3
+  mutability: Mutability::Write|Mutability::Read
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  sensorNamePattern: nameLeaf
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: int64_t
+
+0x66:
+  entityID: 0x0A
+  entityInstance: 10
+  sensorType: 0x02
+  path: /xyz/openbmc_project/sensors/voltage/P1V2_BMC_Vol
+  sensorReadingType: 0x01
+  multiplierM: 78
+  offsetB: 0
+  bExp: 0
+  rExp: -4
+  scale: -3
+  mutability: Mutability::Write|Mutability::Read
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  sensorNamePattern: nameLeaf
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: int64_t
+
+0x67:
+  entityID: 0x0A
+  entityInstance: 11
+  sensorType: 0x02
+  path: /xyz/openbmc_project/sensors/voltage/PVTT_BMC_Vol
+  sensorReadingType: 0x01
+  multiplierM: 392
+  offsetB: 0
+  bExp: 0
+  rExp: -5
+  scale: -3
+  mutability: Mutability::Write|Mutability::Read
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  sensorNamePattern: nameLeaf
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: int64_t
+
+0x68:
+  entityID: 0x0A
+  entityInstance: 12
+  sensorType: 0x02
+  path: /xyz/openbmc_project/sensors/voltage/P1V175_BMC_Vol
+  sensorReadingType: 0x01
+  multiplierM: 78
+  offsetB: 0
+  bExp: 0
+  rExp: -4
+  scale: -3
+  mutability: Mutability::Write|Mutability::Read
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  sensorNamePattern: nameLeaf
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: int64_t
+
+0x69:
+  entityID: 0x0A
+  entityInstance: 13
+  sensorType: 0x02
+  path: /xyz/openbmc_project/sensors/voltage/P3V3_PEVPH_Vol
+  sensorReadingType: 0x01
+  multiplierM: 156
+  offsetB: 0
+  bExp: 0
+  rExp: -4
+  scale: -3
+  mutability: Mutability::Write|Mutability::Read
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  sensorNamePattern: nameLeaf
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: int64_t
