@@ -74,13 +74,15 @@ function check_present_and_powergood(){
     fi
 }
 
+echo "==========Start NVME powermanager service $(date) ==========="
+
 ##Initial U2 present status
 for i in {0..7};
 do 
     update_u2_status $i ${U2_PRESENT[$i]}
 done
 
-
+echo "==========End Update present status $(date) =========================="
 ## Loop while
 while :
 do
