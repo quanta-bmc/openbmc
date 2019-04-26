@@ -3,14 +3,14 @@
   group: path
   members:
     - meta: PATH
-      path: /xyz/openbmc_project/sensor/memory/ECC
+      path: /xyz/openbmc_project/memory/ECC
 
 - name:  ecclogfull property
   class: group
   group: property
   type:  boolean
   members:
-    - interface: xyz.openbmc_project.sensor.Memory.MemoryECC
+    - interface: xyz.openbmc_project.Memory.MemoryECC
       meta: PROPERTY
       property: isLoggingLimitReached
 
@@ -19,7 +19,7 @@
   group: property
   type:  int64
   members:
-    - interface: xyz.openbmc_project.sensor.MemoryECC
+    - interface: xyz.openbmc_project.MemoryECC
       meta: PROPERTY
       property: ceCount
 
@@ -28,7 +28,7 @@
   group: property
   type:  int64
   members:
-    - interface: xyz.openbmc_project.sensor.MemoryECC
+    - interface: xyz.openbmc_project.MemoryECC
       meta: PROPERTY
       property: ueCount
 
@@ -56,7 +56,7 @@
 - name: check ecclogfull
   class: condition
   condition: count
-  paths: path 
+  paths: path
   properties: ecclogfull property
   callback: create ecclogfull log and event
   countop: '=='
@@ -68,7 +68,7 @@
 - name: check ce counter property
   class: condition
   condition: count
-  paths: path 
+  paths: path
   properties: ce counter property
   callback: create ce counter log and event
   countop: '=='
@@ -79,14 +79,14 @@
 - name: check ue counter property
   class: condition
   condition: count
-  paths: path 
+  paths: path
   properties: ue counter property
   callback: create ue counter log and event
   countop: '=='
   countbound: 1
   op: '>'
   bound: 0
-  
+
 - name: create ecclogfull log and event
   description: >
     'create ecclogfull log and event.'
@@ -94,7 +94,7 @@
   callback: group
   members:
     - create ecclogfull log error
-    
+
 - name: create ce counter log and event
   description: >
     'create ce counter log and event.'
@@ -114,7 +114,7 @@
 - name: create ecclogfull event
   class: callback
   callback: event
-  paths: path 
+  paths: path
   properties: ecclogfull property
   eventName: ecc
   eventMessage: "ECC collection limit is reached."
@@ -126,12 +126,12 @@
   callback: elog
   paths: path
   properties: ecclogfull property
-  error: xyz::openbmc_project::Memory::ECC::Error::isLoggingLimitReached
+  error: xyz::openbmc_project::Memory::MemoryECC::Error::isLoggingLimitReached
 
 - name: create ce counter event
   class: callback
   callback: event
-  paths: path 
+  paths: path
   properties: ce counter property
   eventName: ecc
   eventMessage: "Correctable ECC/other correctable memory error."
@@ -143,12 +143,12 @@
   callback: elog
   paths: path
   properties: ce counter property
-  error: xyz::openbmc_project::Memory::ECC::Error::ceCount
+  error: xyz::openbmc_project::Memory::MemoryECC::Error::ceCount
 
 - name: create ue counter event
   class: callback
   callback: event
-  paths: path 
+  paths: path
   properties: ue counter property
   eventName: ecc
   eventMessage: "Uncorrectable ECC/other correctable memory error."
@@ -160,4 +160,4 @@
   callback: elog
   paths: path
   properties: ue counter property
-  error: xyz::openbmc_project::Memory::ECC::Error::ueCount
+  error: xyz::openbmc_project::Memory::MemoryECC::Error::ueCount

@@ -18,3 +18,5 @@ INSTFMT = "obmc-read-eeprom@{0}.service"
 FMT = "../${TMPL}:${TGT}.wants/${INSTFMT}"
 
 SYSTEMD_LINK_${PN}_append_gsj := " ${@compose_list(d, 'FMT', 'EEPROMS_ESCAPED')}"
+
+SRC_URI += "file://0001-Skip-internal-and-mltirecord-area.patch"

@@ -4,8 +4,8 @@
   sensorType: 0x01
   path: /xyz/openbmc_project/sensors/temperature/KL0
   sensorReadingType: 0x01
-  bExp: 0  
-  rExp: 0  
+  bExp: 0
+  rExp: 0
   scale: -3
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
@@ -25,8 +25,8 @@
   sensorType: 0x01
   path: /xyz/openbmc_project/sensors/temperature/KL1
   sensorReadingType: 0x01
-  bExp: 0  
-  rExp: 0  
+  bExp: 0
+  rExp: 0
   scale: -3
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
@@ -46,8 +46,8 @@
   sensorType: 0x01
   path: /xyz/openbmc_project/sensors/temperature/KL2
   sensorReadingType: 0x01
-  bExp: 0  
-  rExp: 0  
+  bExp: 0
+  rExp: 0
   scale: -3
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
@@ -67,8 +67,8 @@
   sensorType: 0x01
   path: /xyz/openbmc_project/sensors/temperature/KL3
   sensorReadingType: 0x01
-  bExp: 0  
-  rExp: 0  
+  bExp: 0
+  rExp: 0
   scale: -3
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
@@ -88,8 +88,8 @@
   sensorType: 0x01
   path: /xyz/openbmc_project/sensors/temperature/P48V_HSC_Temp
   sensorReadingType: 0x01
-  bExp: 0  
-  rExp: 0  
+  bExp: 0
+  rExp: 0
   scale: -3
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
@@ -101,7 +101,7 @@
       Value:
         Offsets:
           0xFF:
-            type: int64_t 
+            type: int64_t
 0x70:
   entityID: 0x0A
   entityInstance: 5
@@ -123,7 +123,7 @@
       Value:
         Offsets:
           0xFF:
-            type: int64_t 
+            type: int64_t
 
 0x60:
   entityID: 0x0A
@@ -133,9 +133,9 @@
   sensorReadingType: 0x01
   multiplierM: 243
   offsetB: 0
-  bExp: 0  
+  bExp: 0
   rExp: -3
-  scale: -3 
+  scale: -3
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -156,8 +156,8 @@
   sensorReadingType: 0x01
   multiplierM: 310
   offsetB: 4
-  bExp: 2  
-  rExp: -2  
+  bExp: 2
+  rExp: -2
   scale: -6
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
@@ -177,8 +177,8 @@
   sensorType: 0x01
   path: /xyz/openbmc_project/sensors/temperature/P12V_BRIC_Temp
   sensorReadingType: 0x01
-  bExp: 0  
-  rExp: 0  
+  bExp: 0
+  rExp: 0
   scale: -3
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
@@ -201,7 +201,7 @@
   offsetB: 0
   bExp: 0
   rExp: -3
-  scale: -3  
+  scale: -3
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -222,9 +222,9 @@
   sensorReadingType: 0x01
   multiplierM: 509
   offsetB: 0
-  bExp: 0  
+  bExp: 0
   rExp: -4
-  scale: -3   
+  scale: -3
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -370,7 +370,7 @@
   entityInstance: 1
   sensorType: 0x01
   path: /xyz/openbmc_project/nvme/0
-  sensorReadingType: 0x01  
+  sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -387,7 +387,7 @@
   entityInstance: 2
   sensorType: 0x01
   path: /xyz/openbmc_project/nvme/1
-  sensorReadingType: 0x01  
+  sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -404,7 +404,7 @@
   entityInstance: 3
   sensorType: 0x01
   path: /xyz/openbmc_project/nvme/2
-  sensorReadingType: 0x01  
+  sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -421,7 +421,7 @@
   entityInstance: 4
   sensorType: 0x01
   path: /xyz/openbmc_project/nvme/3
-  sensorReadingType: 0x01  
+  sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -438,7 +438,7 @@
   entityInstance: 5
   sensorType: 0x01
   path: /xyz/openbmc_project/nvme/4
-  sensorReadingType: 0x01  
+  sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -455,7 +455,7 @@
   entityInstance: 6
   sensorType: 0x01
   path: /xyz/openbmc_project/nvme/5
-  sensorReadingType: 0x01  
+  sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -472,7 +472,7 @@
   entityInstance: 7
   sensorType: 0x01
   path: /xyz/openbmc_project/nvme/6
-  sensorReadingType: 0x01  
+  sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -489,7 +489,7 @@
   entityInstance: 8
   sensorType: 0x01
   path: /xyz/openbmc_project/nvme/7
-  sensorReadingType: 0x01  
+  sensorReadingType: 0x01
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -524,4 +524,4 @@
             assert: xyz.openbmc_project.Memory.MemoryECC.ECCStatus.UE
           0x05:
             type: string
-            assert: xyz.openbmc_project.Memory.MemoryECC.ECCStatus.LogFulled
+            assert: xyz.openbmc_project.Memory.MemoryECC.ECCStatus.LogFull

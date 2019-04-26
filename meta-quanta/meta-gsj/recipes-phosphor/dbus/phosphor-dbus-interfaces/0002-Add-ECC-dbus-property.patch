@@ -1,20 +1,20 @@
-From e91b00197dc02fd9148306ef6317444e5a6ce829 Mon Sep 17 00:00:00 2001
-From: will <Will.Liang@quantatw.com>
-Date: Thu, 28 Mar 2019 11:21:52 +0800
+From b7ee059d3ceed763135fcb72025bc6cfe837bb4e Mon Sep 17 00:00:00 2001
+From: will <will.liang@quantatw.com>
+Date: Fri, 12 Apr 2019 08:49:07 +0800
 Subject: [PATCH] Add ECC dbus property
 
 ---
- xyz/openbmc_project/Memory/ECC.errors.yaml         |  8 +++++
+ xyz/openbmc_project/Memory/MemoryECC.errors.yaml   |  8 +++++
  .../Memory/MemoryECC.interface.yaml                | 38 ++++++++++++++++++++++
  2 files changed, 46 insertions(+)
- create mode 100644 xyz/openbmc_project/Memory/ECC.errors.yaml
+ create mode 100644 xyz/openbmc_project/Memory/MemoryECC.errors.yaml
  create mode 100644 xyz/openbmc_project/Memory/MemoryECC.interface.yaml
 
-diff --git a/xyz/openbmc_project/Memory/ECC.errors.yaml b/xyz/openbmc_project/Memory/ECC.errors.yaml
+diff --git a/xyz/openbmc_project/Memory/MemoryECC.errors.yaml b/xyz/openbmc_project/Memory/MemoryECC.errors.yaml
 new file mode 100644
 index 0000000..9c2f4b9
 --- /dev/null
-+++ b/xyz/openbmc_project/Memory/ECC.errors.yaml
++++ b/xyz/openbmc_project/Memory/MemoryECC.errors.yaml
 @@ -0,0 +1,8 @@
 +- name: isLoggingLimitReached
 +  description: ECC collection limit is reached.
@@ -27,7 +27,7 @@ index 0000000..9c2f4b9
 \ No newline at end of file
 diff --git a/xyz/openbmc_project/Memory/MemoryECC.interface.yaml b/xyz/openbmc_project/Memory/MemoryECC.interface.yaml
 new file mode 100644
-index 0000000..38ae9cf
+index 0000000..cb887ad
 --- /dev/null
 +++ b/xyz/openbmc_project/Memory/MemoryECC.interface.yaml
 @@ -0,0 +1,38 @@
@@ -48,7 +48,7 @@ index 0000000..38ae9cf
 +          The item a uncorrectable ECC event has been detected on a read operation.
 +    - name: state
 +      type: enum[self.ECCStatus]
-+      default: Unspecify
++      default: ok
 +      description: >
 +          The state is descripted for ECC status.
 +
@@ -57,7 +57,7 @@ index 0000000..38ae9cf
 +     description: >
 +       The operaing system statuses.
 +     values:
-+       - name: Unspecify
++       - name: ok
 +         description: >
 +           There is no ECC error occurred.
 +       - name: CE
@@ -66,7 +66,7 @@ index 0000000..38ae9cf
 +       - name: UE
 +         description: >
 +           uncorrectable ECC detected.
-+       - name: LogFulled
++       - name: LogFull
 +         description: >
 +           ECC logging reach limits.
 \ No newline at end of file

@@ -4,7 +4,7 @@ U2_PRESENT_STATUS=( 1 1 1 1 1 1 1 1 )
 U2_PRESENT=( 148 149 150 151 152 153 154 155 )
 POWER_U2=( 195 196 202 199 198 197 127 126 )
 PWRGD_U2=( 161 162 163 164 165 166 167 168 )
-
+RST_BMC_U2=( 72 73 74 75 76 77 78 79 )
 
 function set_gpio_direction(){
     #$1 gpio pin, $2 'in','high','low'
@@ -50,9 +50,10 @@ function recovery_pwrgd(){
         pwrgd=$(cat /sys/class/gpio/gpio$3/value)
         if [ "$present" -eq "$pwrgd" ];then
             #set fault led
-            busctl set-property xyz.openbmc_project.LED.GroupManager /xyz/openbmc_project/led/groups/led\_u2\_$1\_fault xyz.openbmc_project.Led.Group Asserted b true
+            set_gpio_direction $4 "low"
         else
-            busctl set-property xyz.openbmc_project.LED.GroupManager /xyz/openbmc_project/led/groups/led\_u2\_$1\_fault xyz.openbmc_project.Led.Group Asserted b false
+            sleep 0.1
+            set_gpio_direction $4 "high"
         fi
     fi
 }
@@ -65,20 +66,12 @@ function check_present_and_powergood(){
     pwrgd=$(cat /sys/class/gpio/gpio$3/value)
     echo "U2 $i present is ${present} and powergood is ${pwrgd}"
     path=`expr $1`
-    if [ "$present" -eq 0 ] && [ "$pwrgd" -eq 1 ];then        
-        busctl set-property xyz.openbmc_project.nvme.manager /xyz/openbmc_project/nvme/$path xyz.openbmc_project.Inventory.Item Present b true
-    else        
-        busctl set-property xyz.openbmc_project.nvme.manager /xyz/openbmc_project/nvme/$path xyz.openbmc_project.Inventory.Item Present b false
-            if [ "$present" -eq "$pwrgd" ];then
-                #set fault led
-                busctl set-property xyz.openbmc_project.LED.GroupManager /xyz/openbmc_project/led/groups/led\_u2\_$1\_fault xyz.openbmc_project.Led.Group Asserted b true
-            else
-                busctl set-property xyz.openbmc_project.LED.GroupManager /xyz/openbmc_project/led/groups/led\_u2\_$1\_fault xyz.openbmc_project.Led.Group Asserted b false
-            fi
-        
+    if [ "$present" -eq 0 ] && [ "$pwrgd" -eq 1 ];then
+        sleep 0.1
+        set_gpio_direction $4 "high"
+    else
+        set_gpio_direction $4 "low"
     fi
-    
-
 }
 
 ##Initial U2 present status
@@ -97,14 +90,13 @@ do
     sleep 0.125
     read=$(cat /sys/class/gpio/gpio${U2_PRESENT[$i]}/value)
     if [ $read -eq 0 ];then 
-        recovery_pwrgd $i $read "${PWRGD_U2[$i]}"
+        recovery_pwrgd $i $read "${PWRGD_U2[$i]}" "${RST_BMC_U2[$i]}"
     fi
     if [ "${U2_PRESENT_STATUS[$i]}" != "$read" ];then
         echo "Update present status"
         update_u2_direct $i "$read"
         read_present_set_related_power $i "${POWER_U2[$i]}"
-        #check_present_and_powergood $i "${U2_PRESENT[$i]}" "${PWRGD_U2[$i]}"
-        check_present_and_powergood $i $read "${PWRGD_U2[$i]}"
+        check_present_and_powergood $i $read "${PWRGD_U2[$i]}" "${RST_BMC_U2[$i]}"
     fi 
   done
 done

@@ -31,18 +31,19 @@ function read_present_set_related_power(){
     fi
 }
 
-# function check_present_and_powergood(){
-#     #$1 present gpio, $2 powergood gpio
-#     present=$(cat /sys/class/gpio/gpio$1/value)
-#     pwrgd=$(cat /sys/class/gpio/gpio$2/value)
-#     if [ "$present" != "$pwrgd"];then
-#         #send status
-#     else
-#         #set fault led
-#     fi
-# }
+function check_powergood_update_reset(){
+    #$1 read powergood gpio, $2 output reset gpio
+    var=$(cat /sys/class/gpio/gpio$1/value)
+    if [ "$var" == "1" ];then
+        sleep 0.1
+        set_gpio_direction $2 "high"
+    else
+        sleep 0.1
+        set_gpio_direction $2 "low"
+    fi
+}
 
-## Initial U2_PRESNET_N
+## Initial U2_PRESENT_N
 U2_PRESENT=( 148 149 150 151 152 153 154 155 )
 for i in "${U2_PRESENT[@]}";
 do 
@@ -65,11 +66,18 @@ do
     set_gpio_direction $i 'in';
 done
 
+## Initial RST_BMC_U2
+RST_BMC_U2=( 72 73 74 75 76 77 78 79 )
+for i in "${RST_BMC_U2[@]}";
+do
+    set_gpio $i;
+done
 
 ### Initial related Power by Present
 for i in {0..7};
 do
     read_present_set_related_power "${U2_PRESENT[$i]}" "${POWER_U2[$i]}";
+    check_powergood_update_reset "${PWRGD_U2[$i]}" "${RST_BMC_U2[$i]}";
 done 
 
 ## Unexport script
