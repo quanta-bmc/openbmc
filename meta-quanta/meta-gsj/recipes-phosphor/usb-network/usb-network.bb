@@ -21,8 +21,6 @@ do_install() {
     install -d ${D}${sysconfdir_native}/systemd/network/
     install -m 0644 ${WORKDIR}/00-bmc-usb0.network ${D}${sysconfdir_native}/systemd/network
 
-    # install -d ${D}${base_libdir}/systemd/network/
-    # install -m 644 ${WORKDIR}/usb0.network ${D}${base_libdir}/systemd/network/
 }
 
 NATIVE_SYSTEMD_SUPPORT = "1"
