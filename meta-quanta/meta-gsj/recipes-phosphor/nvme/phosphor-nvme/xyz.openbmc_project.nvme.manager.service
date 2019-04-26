@@ -1,0 +1,12 @@
+[Unit]
+Description=NVMe management
+After=nvme_gpio.service xyz.openbmc_project.LED.GroupManager.service
+
+[Service]
+ExecStart=/usr/sbin/nvme_main
+Type=dbus
+BusName=xyz.openbmc_project.nvme.manager
+SyslogIdentifier=phosphor-nvme
+
+[Install]
+WantedBy={SYSTEMD_DEFAULT_TARGET}
