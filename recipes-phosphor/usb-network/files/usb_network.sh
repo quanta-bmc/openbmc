@@ -11,17 +11,22 @@ if [ ! -f "g1" ]; then
     mkdir -p strings/0x409
     echo "Linux" > strings/0x409/manufacturer
     echo "Etherned/RNDIS gadget" > strings/0x409/product
-    
+
     mkdir -p configs/c.1
     echo 100 > configs/c.1/MaxPower
     mkdir -p configs/c.1/strings/0x409
     echo "RNDIS" > configs/c.1/strings/0x409/configuration
-    
-    mkdir -p functions/rndis.usb0 
-    
+
+    mkdir -p functions/rndis.usb0
+    cat /home/root/usb0_dev > functions/rndis.usb0/dev_addr # write device mac address
+    cat /home/root/usb0_host > functions/rndis.usb0/host_addr # write usb mac address
+
     ln -s functions/rndis.usb0 configs/c.1
-    
+
     echo f0839000.udc > UDC
+    
+    rm /home/root/usb0_dev
+    rm /home/root/usb0_host
 
 fi
 exit 0
