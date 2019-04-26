@@ -22,6 +22,7 @@ OBMC_IMAGE_EXTRA_INSTALL_append = " quanta-nvme-powerctrl"
 OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-pid-control"
 OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-nvme"
 OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-ecc"
+OBMC_IMAGE_EXTRA_INSTALL_append = " ipmitool"
 
 # start generate mtd image only after scrits, tools and inputs are ready
 do_generate_static[depends] += " \
