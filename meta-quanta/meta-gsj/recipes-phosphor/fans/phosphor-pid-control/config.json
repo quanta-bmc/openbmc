@@ -1,0 +1,80 @@
+{
+    "sensors" : [
+        {
+            "name": "Fan0_0_RPM",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/Fan0_0_RPM",
+            "writePath": "/sys/devices/platform/ahb/ahb:apb/f0103000.pwm-fan-controller/hwmon/**/pwm1",
+            "min": 0,
+            "max": 255
+        },
+        {
+            "name": "Fan0_1_RPM",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/Fan0_1_RPM",
+            "writePath": "/sys/devices/platform/ahb/ahb:apb/f0103000.pwm-fan-controller/hwmon/**/pwm1",
+            "min": 0,
+            "max": 255
+        },
+        {
+            "name": "Fan1_0_RPM",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/Fan1_0_RPM",
+            "writePath": "/sys/devices/platform/ahb/ahb:apb/f0103000.pwm-fan-controller/hwmon/**/pwm2",
+            "min": 0,
+            "max": 255
+        },
+        {
+            "name": "Fan1_1_RPM",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/Fan1_1_RPM",
+            "writePath": "/sys/devices/platform/ahb/ahb:apb/f0103000.pwm-fan-controller/hwmon/**/pwm2",
+            "min": 0,
+            "max": 255
+        },
+        {
+            "name": "Fan2_0_RPM",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/Fan2_0_RPM",
+            "writePath": "/sys/devices/platform/ahb/ahb:apb/f0103000.pwm-fan-controller/hwmon/**/pwm3",
+            "min": 0,
+            "max": 255
+        },
+        {
+            "name": "Fan2_1_RPM",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/Fan2_1_RPM",
+            "writePath": "/sys/devices/platform/ahb/ahb:apb/f0103000.pwm-fan-controller/hwmon/**/pwm3",
+            "min": 0,
+            "max": 255
+        }
+    ],
+    "zones" : [
+        {
+            "id": 1,
+            "minThermalOutput": 1000.0,
+            "failsafePercent": 75.0,
+            "pids": [
+                {
+                    "name": "fan1-3",
+                    "type": "fan",
+                    "inputs": ["Fan0_0_RPM", "Fan0_1_RPM", "Fan1_0_RPM", "Fan1_1_RPM", "Fan2_0_RPM", "Fan2_1_RPM"],
+                    "setpoint": 90.0,
+                    "pid": {
+                        "samplePeriod": 0.1,
+                        "proportionalCoeff": 0.0,
+                        "integralCoeff": 0.0,
+                        "feedFwdOffsetCoeff": 0.0,
+                        "feedFwdGainCoeff": 0.010,
+                        "integralLimit_min": 0.0,
+                        "integralLimit_max": 0.0,
+                        "outLim_min": 80.0,
+                        "outLim_max": 100.0,
+                        "slewNeg": 0.0,
+                        "slewPos": 0.0
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,75 @@
+From e91b00197dc02fd9148306ef6317444e5a6ce829 Mon Sep 17 00:00:00 2001
+From: will <Will.Liang@quantatw.com>
+Date: Thu, 28 Mar 2019 11:21:52 +0800
+Subject: [PATCH] Add ECC dbus property
+
+---
+ xyz/openbmc_project/Memory/ECC.errors.yaml         |  8 +++++
+ .../Memory/MemoryECC.interface.yaml                | 38 ++++++++++++++++++++++
+ 2 files changed, 46 insertions(+)
+ create mode 100644 xyz/openbmc_project/Memory/ECC.errors.yaml
+ create mode 100644 xyz/openbmc_project/Memory/MemoryECC.interface.yaml
+
+diff --git a/xyz/openbmc_project/Memory/ECC.errors.yaml b/xyz/openbmc_project/Memory/ECC.errors.yaml
+new file mode 100644
+index 0000000..9c2f4b9
+--- /dev/null
++++ b/xyz/openbmc_project/Memory/ECC.errors.yaml
+@@ -0,0 +1,8 @@
++- name: isLoggingLimitReached
++  description: ECC collection limit is reached.
++
++- name: ceCount
++  description: Correctable ECC/other correctable memory error.
++
++- name: ueCount
++  description: Uncorrectable ECC/other uncorrectable memory error.
+\ No newline at end of file
+diff --git a/xyz/openbmc_project/Memory/MemoryECC.interface.yaml b/xyz/openbmc_project/Memory/MemoryECC.interface.yaml
+new file mode 100644
+index 0000000..38ae9cf
+--- /dev/null
++++ b/xyz/openbmc_project/Memory/MemoryECC.interface.yaml
+@@ -0,0 +1,38 @@
++description: >
++    Implement to provide memory ECC attributes.
++properties:
++    - name: isLoggingLimitReached
++      type: boolean
++      description: >
++          The item is ECC logging reach limits.
++    - name: ceCount
++      type: int64
++      description: >
++          The item a correctable ECC event has been detected on a read operation.
++    - name: ueCount
++      type: int64
++      description: >
++          The item a uncorrectable ECC event has been detected on a read operation.
++    - name: state
++      type: enum[self.ECCStatus]
++      default: Unspecify
++      description: >
++          The state is descripted for ECC status.
++
++enumerations:
++   - name: ECCStatus
++     description: >
++       The operaing system statuses.
++     values:
++       - name: Unspecify
++         description: >
++           There is no ECC error occurred.
++       - name: CE
++         description: >
++           correctable ECC detected.
++       - name: UE
++         description: >
++           uncorrectable ECC detected.
++       - name: LogFulled
++         description: >
++           ECC logging reach limits.
+\ No newline at end of file
+-- 
+2.7.4
+

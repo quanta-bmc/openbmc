@@ -1,0 +1,119 @@
+From 31c2ed7475c7ee1285203ed8af4252d1c21ecd62 Mon Sep 17 00:00:00 2001
+From: Duke <Duke.Du@quantatw.com>
+Date: Tue, 5 Mar 2019 16:40:50 +0800
+Subject: [PATCH] led-gpio
+
+---
+ arch/arm/boot/dts/nuvoton-npcm730-gsj.dts | 92 +++++++++++++++++++++++++++++--
+ 1 file changed, 88 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts b/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts
+index 998a7d4..54beb02 100644
+--- a/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts
++++ b/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts
+@@ -537,14 +537,98 @@
+ 
+ 	leds {
+ 		compatible = "gpio-leds";
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&gpio143ol_pins>;
++		//pinctrl-names = "default";
++		//pinctrl-0 = <&gpio143ol_pins>;
+ 
+-		led {
+-			label = "led-bmc-live";
++		led-bmc-live {
+ 			gpios = <&gpio4 15 GPIO_ACTIVE_HIGH>;
+ 			linux,default-trigger = "heartbeat";
+ 		};
++
++		LED_U2_0_LOCATE {
++			gpios = <&gpio0 0 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_1_LOCATE {
++			gpios = <&gpio0 1 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_2_LOCATE {
++			gpios = <&gpio0 2 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_3_LOCATE {
++			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_4_LOCATE {
++			gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_5_LOCATE {
++			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_BMC_TRAY_PWRGD {
++			gpios = <&gpio0 19 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_7_FAULT {
++			gpios = <&gpio6 8 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++		
++		LED_U2_6_LOCATE {
++			gpios = <&gpio0 24 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_7_LOCATE {
++			gpios = <&gpio0 25 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_0_FAULT {
++			gpios = <&gpio2 20 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_1_FAULT {
++			gpios = <&gpio2 21 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_2_FAULT {
++			gpios = <&gpio2 22 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_3_FAULT {
++			gpios = <&gpio2 23 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_4_FAULT {
++			gpios = <&gpio2 24 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_5_FAULT {
++			gpios = <&gpio2 25 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
++
++		LED_U2_6_FAULT {
++			gpios = <&gpio2 26 GPIO_ACTIVE_LOW>;
++			default-state = "off";
++		};
+ 	};
+ };
+ 
+-- 
+2.7.4
+
