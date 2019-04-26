@@ -1,0 +1,163 @@
+- name:  path
+  class: group
+  group: path
+  members:
+    - meta: PATH
+      path: /xyz/openbmc_project/sensor/memory/ECC
+
+- name:  ecclogfull property
+  class: group
+  group: property
+  type:  boolean
+  members:
+    - interface: xyz.openbmc_project.sensor.Memory.MemoryECC
+      meta: PROPERTY
+      property: isLoggingLimitReached
+
+- name:  ce counter property
+  class: group
+  group: property
+  type:  int64
+  members:
+    - interface: xyz.openbmc_project.sensor.MemoryECC
+      meta: PROPERTY
+      property: ceCount
+
+- name:  ue counter property
+  class: group
+  group: property
+  type:  int64
+  members:
+    - interface: xyz.openbmc_project.sensor.MemoryECC
+      meta: PROPERTY
+      property: ueCount
+
+- name: watch ecclogfull
+  class: watch
+  watch: property
+  paths: path
+  properties: ecclogfull property
+  callback: check ecclogfull
+
+- name: watch ce count
+  class: watch
+  watch: property
+  paths: path
+  properties: ce counter property
+  callback: check ce counter property
+
+- name: watch ue count
+  class: watch
+  watch: property
+  paths: path
+  properties: ue counter property
+  callback: check ue counter property
+
+- name: check ecclogfull
+  class: condition
+  condition: count
+  paths: path 
+  properties: ecclogfull property
+  callback: create ecclogfull log and event
+  countop: '=='
+  countbound: 1
+  op: '=='
+  bound: true
+  oneshot: true
+
+- name: check ce counter property
+  class: condition
+  condition: count
+  paths: path 
+  properties: ce counter property
+  callback: create ce counter log and event
+  countop: '=='
+  countbound: 1
+  op: '>'
+  bound: 0
+
+- name: check ue counter property
+  class: condition
+  condition: count
+  paths: path 
+  properties: ue counter property
+  callback: create ue counter log and event
+  countop: '=='
+  countbound: 1
+  op: '>'
+  bound: 0
+  
+- name: create ecclogfull log and event
+  description: >
+    'create ecclogfull log and event.'
+  class: callback
+  callback: group
+  members:
+    - create ecclogfull log error
+    
+- name: create ce counter log and event
+  description: >
+    'create ce counter log and event.'
+  class: callback
+  callback: group
+  members:
+    - create ce counter log error
+
+- name: create ue counter log and event
+  description: >
+    'create ue counter log and event.'
+  class: callback
+  callback: group
+  members:
+    - create ue counter log error
+
+- name: create ecclogfull event
+  class: callback
+  callback: event
+  paths: path 
+  properties: ecclogfull property
+  eventName: ecc
+  eventMessage: "ECC collection limit is reached."
+
+- name: create ecclogfull log error
+  description: >
+    'Create a ecclogfull Error log.'
+  class: callback
+  callback: elog
+  paths: path
+  properties: ecclogfull property
+  error: xyz::openbmc_project::Memory::ECC::Error::isLoggingLimitReached
+
+- name: create ce counter event
+  class: callback
+  callback: event
+  paths: path 
+  properties: ce counter property
+  eventName: ecc
+  eventMessage: "Correctable ECC/other correctable memory error."
+
+- name: create ce counter log error
+  description: >
+    'Create a ce counter Error log.'
+  class: callback
+  callback: elog
+  paths: path
+  properties: ce counter property
+  error: xyz::openbmc_project::Memory::ECC::Error::ceCount
+
+- name: create ue counter event
+  class: callback
+  callback: event
+  paths: path 
+  properties: ue counter property
+  eventName: ecc
+  eventMessage: "Uncorrectable ECC/other correctable memory error."
+
+- name: create ue counter log error
+  description: >
+    'Create a ue counter Error log.'
+  class: callback
+  callback: elog
+  paths: path
+  properties: ue counter property
+  error: xyz::openbmc_project::Memory::ECC::Error::ueCount
