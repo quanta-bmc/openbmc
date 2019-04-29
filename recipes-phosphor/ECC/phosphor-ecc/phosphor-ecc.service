@@ -7,7 +7,7 @@ After=obmc-fru-fault-monitor.service
 
 [Service]
 Restart=no
-ExecStart=/usr/sbin/ecc_main
+ExecStart=/usr/bin/ecc_main
 SyslogIdentifier=phosphor-ecc
 Type=dbus
 BusName=xyz.openbmc_project.memory.ECC
