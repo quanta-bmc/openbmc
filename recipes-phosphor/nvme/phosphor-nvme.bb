@@ -28,6 +28,6 @@ do_install() {
     install -d ${D}${bindir}
     install -m 0755  nvme_main ${D}${bindir}
 
-    install -Dm 0644  ${WORKDIR}/nvme_config.json ${D}${sysconfdir}/nvme/nvme_config.json
+    install -Dm 0644  ${S}/nvme_config.json ${D}${sysconfdir}/nvme/nvme_config.json
 
 }
