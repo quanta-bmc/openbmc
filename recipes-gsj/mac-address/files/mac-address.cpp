@@ -10,6 +10,7 @@ int main()
     size_t bytesRead = 0;
     size_t macAddressNum = 4;
 
+    // get eeprom data
     FILE* fruFilePointer = std::fopen(MACADDRESS_EEPROM_FILE, "rb");
     if (fruFilePointer == NULL)
     {
@@ -48,30 +49,23 @@ int main()
     std::fclose(fruFilePointer);
     fruFilePointer = NULL;
 
-    // convert data into hex format
-    std::string fruHexData[dataLen];
-
-    for (size_t i = 0; i < dataLen; i++)
-    {
-        char buff[3] = {0};        
-        sprintf(buff, "%02x", fruData[i]);
-        std::string str = buff;
-        fruHexData[i] = str;
-    }
-
-    std::stringstream ss;
-
     // get offset
-    size_t offset[5];
+    uint8_t offset[5];
     for (size_t i = 0; i < 5; i++)
     {
-        ss << std::dec << std::stoi(fruHexData[i + 1], nullptr, 16);
-        offset[i] = (size_t)std::stoi(ss.str(), nullptr, 10);
-        ss.str(std::string());
+        offset[i] = fruData[i + 1];
+    }
+
+    if (offset[0] == 0)
+    {
+        log<level::ERR>("No internal use area",
+                        entry("FILE=%s", MACADDRESS_EEPROM_FILE),
+                        entry("ERRNO=%s", std::strerror(errno)));
+        return generateRandomMacAddress();
     }
 
     // get mac address end offset
-    size_t macAddressEndOffset = 5;
+    uint8_t macAddressEndOffset = 5;
     for (size_t i = 1; i < 5; i++)
     {
         if (offset[i] != 0)
@@ -82,14 +76,12 @@ int main()
     }
 
     // check sum
-    size_t checksum = 0;
-    for (size_t i = 0; i < (macAddressEndOffset - offset[0]) * 8; i++)
+    uint8_t checksum = 0;
+    for (size_t i = 0; i < uint8ToInt(macAddressEndOffset - offset[0]) * 8; i++)
     {
-        ss << std::dec << std::stoi(fruHexData[i + offset[0] * 8], nullptr, 16);
-        checksum += (size_t)std::stoi(ss.str(), nullptr, 10);
-        ss.str(std::string());
+        checksum += fruData[i + offset[0] * 8];
     }
-    if (checksum % 256 != 0)
+    if (checksum != 0)
     {
         log<level::ERR>("Mac address check sum error. Use random mac address instead.",
                         entry("FILE=%s", MACADDRESS_EEPROM_FILE),
@@ -98,21 +90,30 @@ int main()
     }
 
     // get mac address num
-    size_t count = macAddressEndOffset * 8 - 2;
-    while (fruHexData[count] == "ff")
+    size_t count = uint8ToInt(macAddressEndOffset) * 8 - 2;
+    while (fruData[count] == 0xff)
     {
         count--;
     }
-    macAddressNum = (size_t)std::stoi(fruHexData[count], nullptr, 16);
+    macAddressNum = uint8ToInt(fruData[count]);
 
     // read mac address
+    std::stringstream ss;
     std::string macAddress[macAddressNum];
-    macAddress[0] = (fruHexData[offset[0] * 8 + 3] + ":" + \
-        fruHexData[1 + offset[0] * 8 + 3] + ":" + \
-        fruHexData[2 + offset[0] * 8 + 3] + ":" + \
-        fruHexData[3 + offset[0] * 8 + 3] + ":" + \
-        fruHexData[4 + offset[0] * 8 + 3] + ":" + \
-        fruHexData[5 + offset[0] * 8 + 3]).c_str();
+    macAddress[0] = "";
+    for (size_t i = 0; i < 5; i++)
+    {
+        ss << std::hex << std::setfill('0');
+	    ss << std::hex << std::setw(2) << static_cast<int>(fruData[i + offset[0] * 8 + 3]);
+        macAddress[0] += ss.str();
+        macAddress[0] += ":";
+        ss.str(std::string());
+    }
+    ss << std::hex << std::setfill('0');
+    ss << std::hex << std::setw(2) << static_cast<int>(fruData[5 + offset[0] * 8 + 3]);
+    macAddress[0] += ss.str();
+    ss.str(std::string());
+
     for (size_t i = 1; i < macAddressNum; i++)
     {
         macAddress[i] = macAddressAddOne(macAddress[i - 1]);

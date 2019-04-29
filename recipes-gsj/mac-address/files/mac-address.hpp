@@ -77,7 +77,7 @@ std::string macAddressAddOne(std::string macAddress)
         result[i] = ss.str();
         ss.str(std::string());
     }
-    
+
     ret = (result[0] + ":" + \
         result[1] + ":" + \
         result[2] + ":" + \
@@ -92,20 +92,29 @@ int generateRandomMacAddress()
 {
     std::string result[6];
     std::stringstream ss;
+    int randomNumber = 0;
     srand(time(NULL));
+
     // quanta computer mac address 00:1b:24:xx:xx:xx
     result[0] = "00";
     result[1] = "1b";
     result[2] = "24";
     for (size_t i = 3; i < 6; i++)
     {
-        int randomNumber = rand() % 256;
+        if (i == 5)
+        {
+            randomNumber = rand() % 253;
+        }
+        else
+        {
+            randomNumber = rand() % 256;
+        }
         ss << std::setfill ('0') << std::setw(2) << std::hex << randomNumber;
         result[i] = ss.str();
         ss.str(std::string());
     }
 
-    std::string macAddress[4];    
+    std::string macAddress[4];
     macAddress[0] = (result[0] + ":" + \
         result[1] + ":" + \
         result[2] + ":" + \
@@ -129,4 +138,13 @@ int generateRandomMacAddress()
     writeMacAddress(port3, macAddress[3]);
 
     return -1;
+}
+
+int uint8ToInt(uint8_t x)
+{
+    char buff[3] = {0};
+    sprintf(buff, "%02x", x);
+    std::string tmp = buff;
+
+    return std::stoi(tmp, nullptr, 16);
 }
