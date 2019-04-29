@@ -31,8 +31,8 @@ do_compile() {
 }
 
 do_install() {
-    install -d ${D}${sbindir}
-    install -m 0755 ${WORKDIR}/mac-address ${D}/${sbindir}
+    install -d ${D}${bindir}
+    install -m 0755 ${WORKDIR}/mac-address ${D}/${bindir}
 
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/mac-address.service ${D}${systemd_unitdir}/system

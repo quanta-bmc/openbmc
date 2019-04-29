@@ -5,7 +5,7 @@ Wants=network-pre.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/sbin/mac-address
+ExecStart=/usr/bin/mac-address
 
 [Install]
 WantedBy=multi-user.target
