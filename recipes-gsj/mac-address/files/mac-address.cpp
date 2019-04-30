@@ -14,7 +14,7 @@ int main()
     FILE* fruFilePointer = std::fopen(MACADDRESS_EEPROM_FILE, "rb");
     if (fruFilePointer == NULL)
     {
-        log<level::ERR>("Unable to open FRU file",
+        log<level::ERR>("Unable to open FRU file. Use random mac address instead.",
                         entry("FILE=%s", MACADDRESS_EEPROM_FILE),
                         entry("ERRNO=%s", std::strerror(errno)));
         cleanupError(fruFilePointer);
@@ -24,7 +24,7 @@ int main()
     // get size of file
     if (std::fseek(fruFilePointer, 0, SEEK_END))
     {
-        log<level::ERR>("Unable to seek FRU file",
+        log<level::ERR>("Unable to seek FRU file. Use random mac address instead.",
                         entry("FILE=%s", MACADDRESS_EEPROM_FILE),
                         entry("ERRNO=%s", std::strerror(errno)));
         cleanupError(fruFilePointer);
@@ -39,7 +39,7 @@ int main()
     bytesRead = std::fread(fruData, dataLen, 1, fruFilePointer);
     if (bytesRead != 1)
     {
-        log<level::ERR>("Unable to read FRU file",
+        log<level::ERR>("Unable to read FRU file. Use random mac address instead.",
                         entry("FILE=%s", MACADDRESS_EEPROM_FILE),
                         entry("ERRNO=%s", std::strerror(errno)));
         cleanupError(fruFilePointer);
@@ -58,7 +58,7 @@ int main()
 
     if (offset[0] == 0)
     {
-        log<level::ERR>("No internal use area",
+        log<level::ERR>("No internal use area. Use random mac address instead.",
                         entry("FILE=%s", MACADDRESS_EEPROM_FILE),
                         entry("ERRNO=%s", std::strerror(errno)));
         return generateRandomMacAddress();
@@ -96,6 +96,13 @@ int main()
         count--;
     }
     macAddressNum = uint8ToInt(fruData[count]);
+    if (macAddressNum < 4)
+    {
+        log<level::ERR>("Mac address number is less than 4. Use random mac address instead.",
+                        entry("FILE=%s", MACADDRESS_EEPROM_FILE),
+                        entry("ERRNO=%s", std::strerror(errno)));
+        return generateRandomMacAddress();
+    }
 
     // read mac address
     std::stringstream ss;
