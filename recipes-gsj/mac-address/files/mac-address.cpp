@@ -75,9 +75,23 @@ int main()
         }
     }
 
+    // common header check sum
+    uint8_t commonHeaderChecksum = 0;
+    for (size_t i = 0; i < 8; i++)
+    {
+        commonHeaderChecksum += fruData[i];
+    }
+    if (commonHeaderChecksum != 0)
+    {
+        log<level::ERR>("Common header check sum error. Use random mac address instead.",
+                        entry("FILE=%s", MACADDRESS_EEPROM_FILE),
+                        entry("ERRNO=%s", std::strerror(errno)));
+        return generateRandomMacAddress();
+    }
+
     // check sum
     uint8_t checksum = 0;
-    for (size_t i = 0; i < uint8ToInt(macAddressEndOffset - offset[0]) * 8; i++)
+    for (size_t i = 0; i < (macAddressEndOffset - offset[0]) * 8; i++)
     {
         checksum += fruData[i + offset[0] * 8];
     }
@@ -90,12 +104,12 @@ int main()
     }
 
     // get mac address num
-    size_t count = uint8ToInt(macAddressEndOffset) * 8 - 2;
+    size_t count = macAddressEndOffset * 8 - 2;
     while (fruData[count] == 0xff)
     {
         count--;
     }
-    macAddressNum = uint8ToInt(fruData[count]);
+    macAddressNum = (size_t)fruData[count];
     if (macAddressNum < 4)
     {
         log<level::ERR>("Mac address number is less than 4. Use random mac address instead.",

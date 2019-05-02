@@ -139,12 +139,3 @@ int generateRandomMacAddress()
 
     return -1;
 }
-
-int uint8ToInt(uint8_t x)
-{
-    char buff[3] = {0};
-    sprintf(buff, "%02x", x);
-    std::string tmp = buff;
-
-    return std::stoi(tmp, nullptr, 16);
-}
