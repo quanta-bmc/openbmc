@@ -34,23 +34,33 @@ function read_present_set_related_power(){
     fi
 }
 
+clock_gen_value=$(i2cget -y 8 0x68 0 i 2|sed 's/[0-9]: 0x[0-9a-zA-Z][0-9a-zA-Z] //g')
+echo "Read Clock_gen_value is: $clock_gen_value"
+write_value=$clock_gen_value
+
+
 function write_clock_gen_chip_1_register(){
-    clock_gen_value=$(i2cget -y 8 0x68 0 i 2|sed 's/[0-9]: 0x[0-9a-zA-Z][0-9a-zA-Z] //g')
+    #clock_gen_value=$(i2cget -y 8 0x68 0 i 2|sed 's/[0-9]: 0x[0-9a-zA-Z][0-9a-zA-Z] //g')
+    #echo "Read clock gen value is $clock_gen_value"
     update_value=$(printf '%x\n' "$((0x01 <<$1))")
     write_value=$(printf '0x%x\n' "$(($clock_gen_value | 0x$update_value))")
-    echo $write_value
-    i2cset -y 8 0x68 0 $write_value s
+    echo "Write SSD $1 register value: $write_value"
+    #i2cset -y 8 0x68 0 $write_value s
+    clock_gen_value=$write_value
+    echo "Update Clock gen value: $clock_gen_value"
 }
 
 
 function write_clock_gen_chip_0_register(){
-    clock_gen_value=$(i2cget -y 8 0x68 0 i 2|sed 's/[0-9]: 0x[0-9a-zA-Z][0-9a-zA-Z] //g')
+    #clock_gen_value=$(i2cget -y 8 0x68 0 i 2|sed 's/[0-9]: 0x[0-9a-zA-Z][0-9a-zA-Z] //g')
+    #echo "Read clock gen value is $clock_gen_value"
     update_value=$(printf '%x\n' "$((0x01 <<$1))")
     verbose_update_value=$(printf '%x\n' "$((~0x$update_value))"|sed 's/ffffffffffffff//g')
     write_value=$(printf '0x%x\n' "$(($clock_gen_value & 0x$verbose_update_value))")
-    echo $write_value
-    i2cset -y 8 0x68 0 $write_value s
-
+    echo "Write SSD $1 register value: $write_value"
+    #i2cset -y 8 0x68 0 $write_value s
+    clock_gen_value=$write_value
+    echo "Update Clock gen value: $clock_gen_value"
 }
 
 
@@ -115,6 +125,9 @@ do
     read_present_set_related_power "${U2_PRESENT[$i]}" "${POWER_U2[$i]}" "${RST_BMC_U2[$i]}" $i;
 #    check_powergood_update_reset "${PWRGD_U2[$i]}" "${RST_BMC_U2[$i]}" $i;
 done
+
+echo "Write final clock gen value: $clock_gen_value"
+i2cset -y 8 0x68 0 $clock_gen_value s
 
 echo "===============End Date: $(date)===================="
 
