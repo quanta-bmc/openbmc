@@ -18,7 +18,13 @@ function read_present_set_related_power(){
     echo "U2 $i present is ${var}"
     if [ "$var" -eq 0 ];then
         set_gpio_direction $2 "high"
-    else 
+    else
+        echo "Close REST pin to low"
+        set_gpio_direction $3 "low"
+        sleep 0.1
+        echo "Close pci clock"
+        write_clock_gen_chip_0_register $1
+        echo "Close Power to low"
         set_gpio_direction $2 "low"
     fi
     sleep 0.2
@@ -42,15 +48,17 @@ function recovery_pwrgd(){
         set_gpio_direction "${POWER_U2[$1]}" "low"
         sleep 0.2
         set_gpio_direction "${POWER_U2[$1]}" "high"
-        sleep 0.5
+        sleep 0.2
         pwrgd=$(cat /sys/class/gpio/gpio$3/value)
         if [ "$present" -eq "$pwrgd" ];then
             #set fault led
             write_clock_gen_chip_0_register $1
             set_gpio_direction $4 "low"
         else
-            sleep 0.1
+            echo "Resetup rest and clock in recovery"
+            sleep 0.01
             write_clock_gen_chip_1_register $1
+            sleep 0.1
             set_gpio_direction $4 "high"
         fi
     fi
@@ -86,8 +94,11 @@ function check_present_and_powergood(){
     echo "U2 $i present is ${present} and powergood is ${pwrgd}"
     path=`expr $1`
     if [ "$present" -eq 0 ] && [ "$pwrgd" -eq 1 ];then
-        sleep 0.1
+        sleep 0.01
+        echo "Open pci clock"
         write_clock_gen_chip_1_register $1
+        sleep 0.1
+        echo "Open rest pin to high"
         set_gpio_direction $4 "high"
     else
         write_clock_gen_chip_0_register $1
@@ -113,15 +124,17 @@ do
     ## 1 scend scan all loop
     sleep 0.125
     read=$(cat /sys/class/gpio/gpio${U2_PRESENT[$i]}/value)
-    if [ $read -eq 0 ] && [ ${U2_PRESENT_STATUS[$i]} -eq 0 ];then 
+    if [ $read -eq 0 ] && [ ${U2_PRESENT_STATUS[$i]} -eq 0 ];then
         recovery_pwrgd $i $read "${PWRGD_U2[$i]}" "${RST_BMC_U2[$i]}"
     fi
     if [ "${U2_PRESENT_STATUS[$i]}" != "$read" ];then
         echo "Update present status"
         update_u2_direct $i "$read"
-        read_present_set_related_power $i "${POWER_U2[$i]}"
-        check_present_and_powergood $i $read "${PWRGD_U2[$i]}" "${RST_BMC_U2[$i]}"
-    fi 
+        read_present_set_related_power $i "${POWER_U2[$i]}" "${RST_BMC_U2[$i]}"
+        if [ $read -eq 0 ];then
+            check_present_and_powergood $i $read "${PWRGD_U2[$i]}" "${RST_BMC_U2[$i]}"
+        fi
+    fi
   done
 done
 

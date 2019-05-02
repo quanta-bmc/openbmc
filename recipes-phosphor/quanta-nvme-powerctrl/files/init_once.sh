@@ -21,11 +21,16 @@ function unexport_gpio(){
 }
 
 function read_present_set_related_power(){
-    #$1 read present gpio, $2 output power gpio,$3 output direction
+    #$1 read present gpio, $2 output power gpio,$3 reset pin, $4 SSD number
     var=$(cat /sys/class/gpio/gpio$1/value)
     # present 0 is plugged,present 1 is removal
     if [ "$var" == "1" ];then
+        set_gpio_direction $3 "low"
+        sleep 0.1
+        write_clock_gen_chip_0_register $4
         set_gpio_direction $2 "low"
+    else
+        write_clock_gen_chip_1_register $4
     fi
 }
 
@@ -51,20 +56,21 @@ function write_clock_gen_chip_0_register(){
 
 
 
-function check_powergood_update_reset(){
-    #$1 read powergood gpio, $2 output reset gpio
-    var=$(cat /sys/class/gpio/gpio$1/value)
-    echo "After set power check $3 SSD Power Good again: $var"
-    if [ "$var" == "1" ];then
-        write_clock_gen_chip_1_register $3
-        sleep 0.1
-        set_gpio_direction $2 "high"
-    else
-        write_clock_gen_chip_0_register $3
-        sleep 0.1
-        set_gpio_direction $2 "low"
-    fi
-}
+#function check_powergood_update_reset(){
+#    #$1 read powergood gpio, $2 output reset gpio
+#    var=$(cat /sys/class/gpio/gpio$1/value)
+#    echo "After set power check $3 SSD Power Good again: $var"
+#    if [ "$var" == "1" ];then
+#        write_clock_gen_chip_1_register $3
+#        sleep 0.1
+#        set_gpio_direction $2 "high"
+#    else
+#        write_clock_gen_chip_0_register $3
+#        sleep 0.1
+#        set_gpio_direction $2 "low"
+#    fi
+#}
+#
 
 echo "================Start Date: $(date)==============="
 
@@ -106,8 +112,8 @@ done
 ### Initial related Power by Present
 for i in {0..7};
 do
-    read_present_set_related_power "${U2_PRESENT[$i]}" "${POWER_U2[$i]}";
-    check_powergood_update_reset "${PWRGD_U2[$i]}" "${RST_BMC_U2[$i]}" $i;
+    read_present_set_related_power "${U2_PRESENT[$i]}" "${POWER_U2[$i]}" "${RST_BMC_U2[$i]}" $i;
+#    check_powergood_update_reset "${PWRGD_U2[$i]}" "${RST_BMC_U2[$i]}" $i;
 done
 
 echo "===============End Date: $(date)===================="
