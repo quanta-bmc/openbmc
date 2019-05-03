@@ -17,8 +17,8 @@ def printUsage():
   print 'pwm_tacho.py -f FanModuleNum[1-3] -r     : Get Duty for individual fan module'
   print 'pwm_tacho.py -a -d duty                  : Set Duty for all fan modules'
   print 'pwm_tacho.py -a -r                       : Get Duty for all fan modules'
-  print 'pwm_tacho.py -f FanNum[1-6] -g           : Get Fan Speed for individual fan'
-  print 'pwm_tacho.py -a -g                       : Get Fan Speed for all fans'
+  print 'pwm_tacho.py -f FanNum[1-6] -g           : Get Fan Speed for individual rotor'
+  print 'pwm_tacho.py -a -g                       : Get Fan Speed for all rotors'
 
   exit(1)
 
@@ -34,8 +34,10 @@ def SetFanDuty(pwm_num, duty):
   print "Set Fan Duty for Fan Module"+str(pwm_num)+" to "+duty
 
   pwm_path = PWM_TACHO_SYSFS+'pwm'+str(pwm_num)
+  duty_value = int(duty)  
+  duty_value = int(round(duty_value / 100.0 * 255, 2))
   with open(pwm_path, 'w') as f:
-    f.write(str(duty)+'\n')
+    f.write(str(duty_value)+'\n')
 
 def GetFanDuty(pwm_num):
   if (pwm_num > MAX_FAN_PWM or pwm_num < 1):
@@ -46,6 +48,7 @@ def GetFanDuty(pwm_num):
   with open(pwm_path, 'r') as f:
     for line in f:
       pwm_duty = line.rstrip('\n')
+  pwm_duty = int(round(float(pwm_duty) / 255 * 100, 2))
 
   print 'Fan Module'+str(pwm_num)+': '+pwm_duty+' Duty'
 
