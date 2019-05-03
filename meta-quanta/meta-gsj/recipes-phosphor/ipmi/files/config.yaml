@@ -1,4 +1,4 @@
-0x01:
+0x00:
   /system:
     entityID: 23
     entityInstance: 1
@@ -41,7 +41,7 @@
           IPMIFruProperty: FRU File ID
           IPMIFruSection: Board
       xyz.openbmc_project.Inventory.Item.Board:
-0x02:
+0x01:
   /system/chassis/bmc:
     entityID: 6
     entityInstance: 1

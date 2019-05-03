@@ -3,7 +3,7 @@ Description=NVMe management
 After=nvme_gpio.service xyz.openbmc_project.LED.GroupManager.service
 
 [Service]
-ExecStart=/usr/sbin/nvme_main
+ExecStart=/usr/bin/nvme_main
 Type=dbus
 BusName=xyz.openbmc_project.nvme.manager
 SyslogIdentifier=phosphor-nvme

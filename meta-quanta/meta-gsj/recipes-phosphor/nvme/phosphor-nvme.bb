@@ -7,12 +7,12 @@ inherit obmc-phosphor-dbus-service
 inherit obmc-phosphor-systemd
 inherit phosphor-dbus-yaml
 inherit pythonnative
- 
+
 DEPENDS += "sdbusplus"
 DEPENDS += "phosphor-dbus-interfaces"
 DEPENDS += "sdeventplus"
 DEPENDS += "phosphor-logging"
-DEPENDS += "sdbusplus-native" 
+DEPENDS += "sdbusplus-native"
 DEPENDS += "autoconf-archive-native"
 DEPENDS += "nlohmann-json"
 
@@ -24,13 +24,10 @@ S = "${WORKDIR}/git"
 
 DBUS_SERVICE_${PN} = "xyz.openbmc_project.nvme.manager.service"
 
-FILES_${PN} += " ${datadir}/nvme_config.json"
-
 do_install() {
-    install -d ${D}${sbindir}
-    install -m 0755  nvme_main ${D}${sbindir}
+    install -d ${D}${bindir}
+    install -m 0755  nvme_main ${D}${bindir}
 
-    install -d ${D}${datadir}/
-    install -m 0644 -D ${S}/nvme_config.json \
-        ${D}${datadir}/nvme_config.json
+    install -Dm 0644  ${S}/nvme_config.json ${D}${sysconfdir}/nvme/nvme_config.json
+
 }

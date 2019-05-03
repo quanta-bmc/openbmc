@@ -24,8 +24,3 @@ DBUS_SERVICE_${PN} += "phosphor-ecc.service"
 SRC_URI = "git://github.com/quanta-bmc/phosphor-ecc.git;protocol=git"
 SRCREV := "${AUTOREV}"
 
-do_install() {
-        install -d ${D}${sbindir}
-        install -m 0755 ecc_main ${D}${sbindir}
-        install -Dm 0644 ${S}/maxlog.conf ${D}${sysconfdir}/ecc/maxlog.conf
-}
