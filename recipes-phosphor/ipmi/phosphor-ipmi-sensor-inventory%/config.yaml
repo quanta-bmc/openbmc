@@ -195,7 +195,7 @@
   entityID: 0x0A
   entityInstance: 7
   sensorType: 0x03
-  path: /xyz/openbmc_project/sensors/current/P12V_BRIC_Current
+  path: /xyz/openbmc_project/sensors/current/P12V_BRIC_Curr
   sensorReadingType: 0x01
   multiplierM: 200
   offsetB: 0
@@ -244,7 +244,7 @@
   sensorType: 0x04
   path: /xyz/openbmc_project/sensors/fan_tach/Fan0_0_RPM
   sensorReadingType: 0x01
-  multiplierM: 100
+  multiplierM: 79
   offsetB: 0
   bExp: 0
   rExp: 0
@@ -265,7 +265,7 @@
   sensorType: 0x04
   path: /xyz/openbmc_project/sensors/fan_tach/Fan0_1_RPM
   sensorReadingType: 0x01
-  multiplierM: 100
+  multiplierM: 79
   offsetB: 0
   bExp: 0
   rExp: 0
@@ -286,7 +286,7 @@
   sensorType: 0x04
   path: /xyz/openbmc_project/sensors/fan_tach/Fan1_0_RPM
   sensorReadingType: 0x01
-  multiplierM: 100
+  multiplierM: 79
   offsetB: 0
   bExp: 0
   rExp: 0
@@ -307,7 +307,7 @@
   sensorType: 0x04
   path: /xyz/openbmc_project/sensors/fan_tach/Fan1_1_RPM
   sensorReadingType: 0x01
-  multiplierM: 100
+  multiplierM: 79
   offsetB: 0
   bExp: 0
   rExp: 0
@@ -328,7 +328,7 @@
   sensorType: 0x04
   path: /xyz/openbmc_project/sensors/fan_tach/Fan2_0_RPM
   sensorReadingType: 0x01
-  multiplierM: 100
+  multiplierM: 79
   offsetB: 0
   bExp: 0
   rExp: 0
@@ -349,7 +349,7 @@
   sensorType: 0x04
   path: /xyz/openbmc_project/sensors/fan_tach/Fan2_1_RPM
   sensorReadingType: 0x01
-  multiplierM: 100
+  multiplierM: 79
   offsetB: 0
   bExp: 0
   rExp: 0
