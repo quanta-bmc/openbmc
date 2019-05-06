@@ -9,62 +9,64 @@ PWM_TACH_NAME = 'npcm7xx_pwm_fan'
 PWM_TACHO_SYSFS=' '
 MAX_FAN_NUMBER=6
 MAX_FAN_PWM=3
+FAN_NAME = ["Fan0_0_RPM", "Fan0_1_RPM", "Fan1_0_RPM", "Fan1_1_RPM", 
+            "Fan2_0_RPM", "Fan2_1_RPM"]
 
 def printUsage():
   print 'Usage:'
-  print 'pwm_tacho.py -l                          : List Fan Speed Table and Fan Duty Table'
-  print 'pwm_tacho.py -f FanModuleNum[1-3] -d duty: Set Duty for individual fan module'
-  print 'pwm_tacho.py -f FanModuleNum[1-3] -r     : Get Duty for individual fan module'
-  print 'pwm_tacho.py -a -d duty                  : Set Duty for all fan modules'
-  print 'pwm_tacho.py -a -r                       : Get Duty for all fan modules'
-  print 'pwm_tacho.py -f FanNum[1-6] -g           : Get Fan Speed for individual rotor'
-  print 'pwm_tacho.py -a -g                       : Get Fan Speed for all rotors'
+  print 'pwm_tacho.py -l                            : List Fan Speed Table and Fan Duty Table'
+  print 'pwm_tacho.py -f FanModuleNum[1-3] -d duty  : Set Duty for individual fan module (0-100)'
+  print 'pwm_tacho.py -f FanModuleNum[1-3] -r       : Get Duty for individual fan module (0-100)'
+  print 'pwm_tacho.py -a -d duty                    : Set Duty for all fan modules (0-100)'
+  print 'pwm_tacho.py -a -r                         : Get Duty for all fan modules (0-100)'
+  print 'pwm_tacho.py -f FanNum[1-6] -g             : Get Fan Speed for individual fan'
+  print 'pwm_tacho.py -a -g                         : Get Fan Speed for all fans'
 
   exit(1)
 
 def SetFanDuty(pwm_num, duty):
   if (pwm_num > MAX_FAN_NUMBER or pwm_num < 1):
-    print "Fan Module Number "+str(pwm_num)+" is not valid!!"
+    print "Fan Module Number " + str(pwm_num) + " is not valid!!"
     exit(1)
 
   if int(duty) > 255:
-    print "Invalid duty for Fan Module-"+str(pwm_num)+"!!"
+    print "Invalid duty for Fan Module-" + str(pwm_num) + "!!"
     exit(1)
 
-  print "Set Fan Duty for Fan Module"+str(pwm_num)+" to "+duty
+  print "Set Fan Duty for Fan Module" + str(pwm_num) + " to " + duty
 
-  pwm_path = PWM_TACHO_SYSFS+'pwm'+str(pwm_num)
+  pwm_path = PWM_TACHO_SYSFS + 'pwm' + str(pwm_num)
   duty_value = int(duty)  
   duty_value = int(round(duty_value / 100.0 * 255, 2))
   with open(pwm_path, 'w') as f:
-    f.write(str(duty_value)+'\n')
+    f.write(str(duty_value) + '\n')
 
 def GetFanDuty(pwm_num):
   if (pwm_num > MAX_FAN_PWM or pwm_num < 1):
-    print "Fan Module Number "+str(pwm_num)+" is not valid!!"
+    print "Fan Module Number " + str(pwm_num) + " is not valid!!"
     exit(1)
 
-  pwm_path = PWM_TACHO_SYSFS+'pwm'+str(pwm_num)
+  pwm_path = PWM_TACHO_SYSFS + 'pwm' + str(pwm_num)
   with open(pwm_path, 'r') as f:
     for line in f:
       pwm_duty = line.rstrip('\n')
   pwm_duty = int(round(float(pwm_duty) / 255 * 100, 2))
 
-  print 'Fan Module'+str(pwm_num)+': '+pwm_duty+' Duty'
+  print 'Fan Module' + str(pwm_num) + ': ' + str(pwm_duty) + ' Duty'
 
 def GetFanRPM(tacho_num):
 
   if (tacho_num > MAX_FAN_NUMBER or tacho_num < 1):
-    print "Fan Number "+str(tacho_num)+" is not valid!!"
+    print "Fan Number " + str(tacho_num) + " is not valid!!"
     exit(1)
 
-  tach_path = PWM_TACHO_SYSFS+'fan'+str(tacho_num)+'_input'
+  tach_path = PWM_TACHO_SYSFS + 'fan' + str(tacho_num) + '_input'
 
   with open(tach_path, 'r') as f:
     for line in f:
       fan_rpm = line.rstrip('\n')
 
-  print 'Fan'+str(tacho_num)+': '+fan_rpm+' RPM'
+  print FAN_NAME[tacho_num - 1] + ': ' + fan_rpm + ' RPM'
 
 def SetAllFanDuty(pwm_duty):
   for fan_pwm in range(1, MAX_FAN_PWM+1):
