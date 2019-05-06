@@ -37,7 +37,7 @@ def SetFanDuty(pwm_num, duty):
 
   pwm_path = PWM_TACHO_SYSFS + 'pwm' + str(pwm_num)
   duty_value = int(duty)  
-  duty_value = int(round(duty_value / 100.0 * 255, 2))
+  duty_value = int(round(duty_value / 100.0 * 255, 0))
   with open(pwm_path, 'w') as f:
     f.write(str(duty_value) + '\n')
 
@@ -50,7 +50,7 @@ def GetFanDuty(pwm_num):
   with open(pwm_path, 'r') as f:
     for line in f:
       pwm_duty = line.rstrip('\n')
-  pwm_duty = int(round(float(pwm_duty) / 255 * 100, 2))
+  pwm_duty = int(round(float(pwm_duty) / 255 * 100, 0))
 
   print 'Fan Module' + str(pwm_num) + ': ' + str(pwm_duty) + ' Duty'
 
