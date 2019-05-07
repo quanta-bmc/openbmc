@@ -134,7 +134,7 @@
         {
             "id": 0,
             "minThermalOutput": 0.0,
-            "failsafePercent": 75.0,
+            "failsafePercent": 100.0,
             "pids": [
                 {
                     "name": "Fan0_0_RPM",
