@@ -24,6 +24,8 @@ OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-nvme"
 OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-ecc"
 OBMC_IMAGE_EXTRA_INSTALL_append = " ipmitool"
 OBMC_IMAGE_EXTRA_INSTALL_append = " mac-address"
+OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-fan"
+OBMC_IMAGE_EXTRA_INSTALL_append = " detect-fan-fail"
 
 # start generate mtd image only after scrits, tools and inputs are ready
 do_generate_static[depends] += " \
