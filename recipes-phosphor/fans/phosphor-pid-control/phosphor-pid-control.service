@@ -4,7 +4,7 @@ After=xyz.openbmc_project.nvme.manager.service
 
 [Service]
 Restart=always
-ExecStart={bindir}/swampd
+ExecStart={bindir}/fan-control.sh
 RestartSec=5
 StartLimitInterval=0
 Type=simple
