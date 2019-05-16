@@ -1,0 +1,11 @@
+[Unit]
+Description=Set Fan to Full Speed as Rebooting
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/bin/test.sh
+
+[Install]
