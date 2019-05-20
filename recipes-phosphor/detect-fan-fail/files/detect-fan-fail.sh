@@ -62,17 +62,18 @@ while true; do
         current_fan_value[$i%2]=$(get_fan_value $hwmon_path ${fan_tach_path[$i]})
         #Compare real rpm of dual rotor with critical_threshold to check if fan faii  
         if [ ${#current_fan_value[@]} -eq 2 ];then
-            if [ ${current_fan_value[0]} -lt $critical_threshold ] && [ ${current_fan_value[1]} -lt $critical_threshold ];then
+            if [ ${current_fan_value[0]} -lt $critical_threshold ] && [ ${current_fan_value[1]} -lt $critical_threshold ] ;then
                 echo "Detected fan fail !!!"
-                systemctl stop phosphor-pid-control
-                for j in ${!fan_tach_path[@]};
-                do
-                    if [ $j -ne $(($i-1)) ] && [ $j -ne $(($i)) ] && [ $(($j%2)) -ne 1 ];then
+                if [ $check_fail_flag -eq 0 ];then
+                    systemctl stop phosphor-pid-control
+                    echo "set value"
+                    for j in ${!fan_tach_path[@]};
+                    do
                         #If fan fail is detect, set other fan rpm to pwm 255.
                         set_fan_value $hwmon_path ${fan_tach_path[$j]}
                         check_fail_flag=1
-                    fi
-                done
+                    done
+                fi
                 current_fan_value=()
                 break
             fi
@@ -84,8 +85,6 @@ while true; do
            check_fail_flag=0
            systemctl restart phosphor-pid-control
            echo "Fans are going to normal"
-        # debug for late code run 
-        #    sleep 15 
         fi
     done
 done
