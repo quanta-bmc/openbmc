@@ -1,5 +1,4 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-##SRC_URI += "file://0001-libfdt-fix-libfdt-header-conflicts-between-UBoot-and.patch"
 
 DEPENDS += "bison-native"
 LIC_FILES_CHKSUM = "file://Licenses/README;md5=30503fd321432fc713238f582193b78e"
