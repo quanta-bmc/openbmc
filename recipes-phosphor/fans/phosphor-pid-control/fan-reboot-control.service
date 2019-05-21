@@ -7,3 +7,6 @@ After=shutdown.target
 Type=oneshot
 RemainAfterExit=true
 ExecStart=/usr/bin/fan-reboot-control.sh
+
+[Install]
+WantedBy=shutdown.target
