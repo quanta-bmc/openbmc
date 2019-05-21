@@ -203,7 +203,7 @@
                     "setpoint": 65.0,
                     "pid": {
                         "samplePeriod": 1.0,
-                        "proportionalCoeff": -3.0,
+                        "proportionalCoeff": -20.0,
                         "integralCoeff": -0.1,
                         "feedFwdOffsetCoeff": 0.0,
                         "feedFwdGainCoeff": 0.0,
@@ -224,7 +224,7 @@
                     "setpoint": 65.0,
                     "pid": {
                         "samplePeriod": 1.0,
-                        "proportionalCoeff": -3.0,
+                        "proportionalCoeff": -20.0,
                         "integralCoeff": -0.1,
                         "feedFwdOffsetCoeff": 0.0,
                         "feedFwdGainCoeff": 0.0,
