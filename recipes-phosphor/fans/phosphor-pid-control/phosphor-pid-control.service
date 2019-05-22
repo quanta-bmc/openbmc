@@ -8,6 +8,7 @@ ExecStart={bindir}/fan-control.sh
 RestartSec=5
 StartLimitInterval=0
 Type=simple
+ExecStopPost={bindir}/fan-no-sensor-protect.sh
 
 [Install]
 WantedBy=basic.target

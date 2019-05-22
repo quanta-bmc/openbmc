@@ -4,12 +4,14 @@ SRC_URI += "file://config-8ssd.json"
 SRC_URI += "file://config-2ssd.json"
 SRC_URI += "file://fan-control.sh"
 SRC_URI += "file://fan-reboot-control.sh"
+SRC_URI += "file://fan-no-sensor-protect.sh"
 SRCREV = "${AUTOREV}"
 
 FILES_${PN} += "${datadir}/swampd/config-8ssd.json"
 FILES_${PN} += "${datadir}/swampd/config-2ssd.json"
 FILES_${PN} += "${bindir}/fan-control.sh"
 FILES_${PN} += "${bindir}/fan-reboot-control.sh"
+FILES_${PN} += "${bindir}/fan-no-sensor-protect.sh"
 
 inherit obmc-phosphor-systemd
 DEPENDS += "cli11"
@@ -28,6 +30,9 @@ do_install_append() {
         ${D}${datadir}/swampd/config-8ssd.json
     install -m 0644 -D ${WORKDIR}/config-2ssd.json \
         ${D}${datadir}/swampd/config-2ssd.json
+
     install -d ${D}/${bindir}
     install -m 0755 ${WORKDIR}/fan-reboot-control.sh ${D}/${bindir}
+    install -d ${D}/${bindir}
+    install -m 0755 ${WORKDIR}/fan-no-sensor-protect.sh ${D}/${bindir}
 }
