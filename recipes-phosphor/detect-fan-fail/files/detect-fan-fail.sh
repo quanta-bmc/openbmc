@@ -40,7 +40,6 @@ function find_hwmon_path() {
     done
 }
 
-echo "================Start Fan Detect: ==============="
 fan_tach_path=( '/xyz/openbmc_project/sensors/fan_tach/Fan0_0_RPM'
                 '/xyz/openbmc_project/sensors/fan_tach/Fan0_1_RPM'
                 '/xyz/openbmc_project/sensors/fan_tach/Fan1_0_RPM'
@@ -55,18 +54,14 @@ check_fail_flag=0
 current_fan_value=()
 while true; do
     sleep 2
-    echo 'Begining to Detect......'
-    pwm_tacho.py -l
     for i in ${!fan_tach_path[@]};
     do
         current_fan_value[$i%2]=$(get_fan_value $hwmon_path ${fan_tach_path[$i]})
         #Compare real rpm of dual rotor with critical_threshold to check if fan faii  
         if [ ${#current_fan_value[@]} -eq 2 ];then
             if [ ${current_fan_value[0]} -lt $critical_threshold ] && [ ${current_fan_value[1]} -lt $critical_threshold ] ;then
-                echo "Detected fan fail !!!"
                 if [ $check_fail_flag -eq 0 ];then
                     systemctl stop phosphor-pid-control
-                    echo "set value"
                     for j in ${!fan_tach_path[@]};
                     do
                         #If fan fail is detect, set other fan rpm to pwm 255.
@@ -84,7 +79,6 @@ while true; do
         if [ $i -eq $((${#fan_tach_path[@]}-1)) ] && [ $check_fail_flag -eq 1 ]; then
            check_fail_flag=0
            systemctl restart phosphor-pid-control
-           echo "Fans are going to normal"
         fi
     done
 done
