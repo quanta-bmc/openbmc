@@ -53,4 +53,3 @@
         Version:
           IPMIFruProperty: FRU File ID
           IPMIFruSection: Board
-      xyz.openbmc_project.Inventory.Item.Board:
