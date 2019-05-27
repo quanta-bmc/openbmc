@@ -2,12 +2,12 @@
 
 #### Description
     The package mantains for SSD power control and related noification handle Deamon
-    
-#### Design
-     
-     The service power supply design follow PCI Express Card Electromechanical Specification Revision 3.0 in Section 2.2 
 
-     nvme_gpio.service follow section 2.2.1 Initial power-Up to initinal and adjust related signal. 
+#### Design
+
+     The service power supply design follow PCI Express Card Electromechanical Specification Revision 3.0 in Section 2.2
+
+     nvme_gpio.service follow section 2.2.1 Initial power-Up to initinal and adjust related signal.
 
      nvme_powermanager.service follow section 2.2.2 power management states monitor PRESENT signal and update related signal.
 
@@ -18,13 +18,13 @@
         2. Set PWR_U2_[SSD_index]_EN to high
         3. Check PWRGD_U2_[SSD_index] is high
         4-1. If PWRGD_U2_[SSD_index] is high (PWR Good)
-		    - Wait 5ms
-		    - Enable PCI Clock by SMBus 9FGL0851
-		    - Wait 100ms
+            - Wait 5ms
+            - Enable PCI Clock by SMBus 9FGL0851
+            - Wait 100ms
             - Set RST_BMC_U2 to high
 
         4-2. If PWRGD_U2_[SSD_index] is low (PWR Fail)
-		    - Set RST_BMC_U2_[SSD_index]_R_N to low
+            - Set RST_BMC_U2_[SSD_index]_R_N to low
             - Wait 100ms
             - Disable PCI Clock by SMBus
 
@@ -41,5 +41,4 @@
     1. PRESENT detect SSD: The Default Hardware is implement.
     2. Initial SSD slot Power output: nvme_gpio service has test on Module. It could sucess initial gpios and setting correct power output.
     3. Detect PRESENT and change power setting: nvme_powermanager service has tested on Module. It could success detect SSD plugged or removal change PWR output.
-    4. Improve initial power-up sequence: matching HW default initial power-up setting, the nvme_gpio service only set unplugged slot related signal. 
-
+    4. Improve initial power-up sequence: matching HW default initial power-up setting, the nvme_gpio service only set unplugged slot related signal.

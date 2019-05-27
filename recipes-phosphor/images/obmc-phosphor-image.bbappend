@@ -7,24 +7,24 @@ FLASH_UBI_OFFSET = "${FLASH_KERNEL_OFFSET}"
 FLASH_ROFS_OFFSET = "8192"
 FLASH_RWFS_OFFSET = "28672"
 
-
 # UBI volume sizes in KB unless otherwise noted.
 FLASH_UBI_RWFS_SIZE = "6144"
 FLASH_UBI_RWFS_TXT_SIZE = "6MiB"
 
-OBMC_IMAGE_EXTRA_INSTALL_append = " usb-network"
-OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-pwmtacho"
-OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-cooling-type"
-OBMC_IMAGE_EXTRA_INSTALL_append = " google-ipmi-sys"
-OBMC_IMAGE_EXTRA_INSTALL_append = " google-ipmi-i2c"
-OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-sel-logger"
-OBMC_IMAGE_EXTRA_INSTALL_append = " quanta-nvme-powerctrl"
-OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-pid-control"
-OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-nvme"
-OBMC_IMAGE_EXTRA_INSTALL_append = " phosphor-ecc"
-OBMC_IMAGE_EXTRA_INSTALL_append = " ipmitool"
-OBMC_IMAGE_EXTRA_INSTALL_append = " mac-address"
-OBMC_IMAGE_EXTRA_INSTALL_append = " detect-fan-fail"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " usb-network"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " phosphor-pwmtacho"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " phosphor-cooling-type"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " google-ipmi-sys"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " google-ipmi-i2c"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " phosphor-sel-logger"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " quanta-nvme-powerctrl"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " phosphor-pid-control"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " phosphor-nvme"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " phosphor-ecc"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " ipmitool"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " mac-address"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " detect-fan-fail"
+OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " phosphor-ipmi-flash"
 
 # start generate mtd image only after scrits, tools and inputs are ready
 do_generate_static[depends] += " \
@@ -42,7 +42,6 @@ do_generate_ubi_tar[depends] += "${PN}:do_generate_static"
 do_generate_static_tar[depends] += "${PN}:do_generate_static"
 
 do_prepare_merged_bb_uboot () {
-
 	# take RunBMC inputs
 	python ${IGPS_DIR}/UpdateInputsBinaries_EB.py
 
@@ -65,18 +64,15 @@ do_prepare_merged_bb_uboot () {
 }
 
 do_restore_uboot () {
-
 	# rename the plan u-boot to be the default (for the nex builds)
 	cp ${UBOOT_BIN}.plan ${UBOOT_BIN}
 }
 
 do_generate_static_prepend () {
-
     bb.build.exec_func("do_prepare_merged_bb_uboot", d)
 }
 
 do_generate_ubi_tar_append () {
-
     do_restore_uboot
 }
 

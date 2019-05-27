@@ -38,7 +38,6 @@ clock_gen_value=$(i2cget -y 8 0x68 0 i 2|sed 's/[0-9]: 0x[0-9a-zA-Z][0-9a-zA-Z] 
 echo "Read Clock_gen_value is: $clock_gen_value"
 write_value=$clock_gen_value
 
-
 function write_clock_gen_chip_1_register(){
     #clock_gen_value=$(i2cget -y 8 0x68 0 i 2|sed 's/[0-9]: 0x[0-9a-zA-Z][0-9a-zA-Z] //g')
     #echo "Read clock gen value is $clock_gen_value"
@@ -49,7 +48,6 @@ function write_clock_gen_chip_1_register(){
     clock_gen_value=$write_value
     echo "Update Clock gen value: $clock_gen_value"
 }
-
 
 function write_clock_gen_chip_0_register(){
     #clock_gen_value=$(i2cget -y 8 0x68 0 i 2|sed 's/[0-9]: 0x[0-9a-zA-Z][0-9a-zA-Z] //g')
@@ -62,9 +60,6 @@ function write_clock_gen_chip_0_register(){
     clock_gen_value=$write_value
     echo "Update Clock gen value: $clock_gen_value"
 }
-
-
-
 
 #function check_powergood_update_reset(){
 #    #$1 read powergood gpio, $2 output reset gpio

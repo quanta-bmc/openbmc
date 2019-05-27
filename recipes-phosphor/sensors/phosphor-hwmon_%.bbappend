@@ -1,6 +1,5 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-
 NAMES = " \
         i2c@81000/lm75@5c \
         i2c@82000/lm75@5c \

@@ -64,7 +64,6 @@ function recovery_pwrgd(){
     fi
 }
 
-
 function write_clock_gen_chip_1_register(){
     clock_gen_value=$(i2cget -y 8 0x68 0 i 2|sed 's/[0-9]: 0x[0-9a-zA-Z][0-9a-zA-Z] //g')
     update_value=$(printf '%x\n' "$((0x01 <<$1))")
@@ -72,7 +71,6 @@ function write_clock_gen_chip_1_register(){
     echo "write clock gen register value: $write_value"
     i2cset -y 8 0x68 0 $write_value s
 }
-
 
 function write_clock_gen_chip_0_register(){
     clock_gen_value=$(i2cget -y 8 0x68 0 i 2|sed 's/[0-9]: 0x[0-9a-zA-Z][0-9a-zA-Z] //g')
@@ -83,7 +81,6 @@ function write_clock_gen_chip_0_register(){
     i2cset -y 8 0x68 0 $write_value s
 
 }
-
 
 function check_present_and_powergood(){
     #$2 present gpio, $3 powergood gpio
@@ -137,6 +134,3 @@ do
     fi
   done
 done
-
-
-

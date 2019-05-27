@@ -9,6 +9,5 @@ Type=oneshot
 ExecStart=/usr/bin/init_once.sh
 StandardOutput=syslog
 
-
 [Install]
 WantedBy={SYSTEMD_DEFAULT_TARGET}

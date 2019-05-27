@@ -8,4 +8,3 @@ IGPS_BBH_XML = "${IGPS_IMAGE_GENERATION_DIR}/references/BootBlockAndHeader_EB.xm
 
 BOOTBLOCK_BIN = "${DEPLOY_DIR_IMAGE}/Poleg_bootblock.bin"
 UBOOT_BIN = "${DEPLOY_DIR_IMAGE}/u-boot.${UBOOT_SUFFIX}"
-

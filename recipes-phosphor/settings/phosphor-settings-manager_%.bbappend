@@ -1,2 +1,2 @@
-FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
-SRC_URI_append = " file://time-default.override.yml"
+FILESEXTRAPATHS_append_gsj := ":${THISDIR}/${PN}"
+SRC_URI_append_gsj = " file://time-default.override.yml"

@@ -24,7 +24,7 @@ if [ ! -f "g1" ]; then
     ln -s functions/rndis.usb0 configs/c.1
 
     echo f0839000.udc > UDC
-    
+
     rm /home/root/usb0_dev
     rm /home/root/usb0_host
 
