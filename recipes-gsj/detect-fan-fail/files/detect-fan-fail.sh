@@ -35,7 +35,6 @@ function find_hwmon_path() {
         # $? is used to record last command state
         if [ $? -eq 0 ];then
             echo "$path"
-            break
         fi
     done
 }
@@ -53,7 +52,6 @@ critical_threshold=$(get_threshold_value $hwmon_path ${fan_tach_path[0]})
 check_fail_flag=0
 current_fan_value=()
 while true; do
-    sleep 2
     for i in ${!fan_tach_path[@]};
     do
         current_fan_value[$i%2]=$(get_fan_value $hwmon_path ${fan_tach_path[$i]})
@@ -81,4 +79,5 @@ while true; do
            systemctl restart phosphor-pid-control
         fi
     done
+    sleep 2
 done
