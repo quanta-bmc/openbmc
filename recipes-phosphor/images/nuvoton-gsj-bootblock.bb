@@ -16,8 +16,7 @@ S = "${WORKDIR}/git"
 
 inherit deploy
 
-
-do_deploy () {
+do_deploy() {
 	install -d ${DEPLOYDIR}
 	install -m 644 Poleg_bootblock.bin ${DEPLOYDIR}/${BOOTBLOCK}
 }

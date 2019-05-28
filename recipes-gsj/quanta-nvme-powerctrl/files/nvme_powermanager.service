@@ -9,4 +9,4 @@ Restart=always
 StandardOutput=syslog
 
 [Install]
-WantedBy={SYSTEMD_DEFAULT_TARGET}
+WantedBy=multi-user.target

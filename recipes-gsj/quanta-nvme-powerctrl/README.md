@@ -13,7 +13,7 @@
 
 #### Process
 
-    * Plugging 
+    * Plugging
         1. U2_[SSD_index] PRSNT_N will be input low
         2. Set PWR_U2_[SSD_index]_EN to high
         3. Check PWRGD_U2_[SSD_index] is high

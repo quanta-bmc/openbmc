@@ -4,19 +4,18 @@ PR = "r1"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${QUANTABASE}/COPYING.apache-2.0;md5=34400b68072d710fecd0a2940a0d1658"
 
-FILESEXTRAPATHS_append := "${THISDIR}/files:"
-
 inherit systemd obmc-phosphor-systemd
 
 DEPENDS += "systemd"
 RDEPENDS_${PN} += "libsystemd"
 RDEPENDS_${PN} += "bash"
 
-SRC_URI +=  "file://detect-fan-fail.sh \
-             file://detect-fan-fail.service \
-            "
+FILESEXTRAPATHS_append_gsj := "${THISDIR}/files:"
+SRC_URI_append_gsj =  " file://detect-fan-fail.sh \
+                        file://detect-fan-fail.service \
+                      "
 
-do_install () {
+do_install_append_gsj() {
     install -d ${D}${bindir}
     install -m 0755 ${WORKDIR}/detect-fan-fail.sh ${D}${bindir}/
 

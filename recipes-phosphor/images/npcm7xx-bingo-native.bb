@@ -12,7 +12,7 @@ SRCREV = "4f102ff7851da9fd11965857edd1b3046c187b7a"
 
 S = "${WORKDIR}/git"
 
-do_install () {
+do_install() {
 
 	# ${IGPS_IMAGE_GENERATION_DIR} was already created by npcm7xx-igps-native
 	install deliverables/linux/Release/bingo ${IGPS_IMAGE_GENERATION_DIR}/bingo

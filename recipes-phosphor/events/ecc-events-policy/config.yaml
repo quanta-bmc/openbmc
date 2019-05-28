@@ -161,3 +161,4 @@
   paths: path
   properties: ue counter property
   error: xyz::openbmc_project::Memory::MemoryECC::Error::ueCount
+  

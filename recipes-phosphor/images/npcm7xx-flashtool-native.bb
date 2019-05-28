@@ -10,7 +10,7 @@ S = "${WORKDIR}/git"
 
 EXTRA_OEMAKE = "'CC=${CC}' 'RANLIB=${RANLIB}' 'AR=${AR}' 'CFLAGS=${CFLAGS} -I${S}/include -DWITHOUT_XATTR' 'BUILDDIR=${S}'"
 
-do_install () {
+do_install() {
 	oe_runmake install DESTDIR=${D} bindir=${bindir}
 }
 

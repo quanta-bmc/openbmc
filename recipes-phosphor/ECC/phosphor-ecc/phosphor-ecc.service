@@ -13,4 +13,4 @@ Type=dbus
 BusName=xyz.openbmc_project.memory.ECC
 
 [Install]
-WantedBy={SYSTEMD_DEFAULT_TARGET}
+WantedBy=multi-user.target

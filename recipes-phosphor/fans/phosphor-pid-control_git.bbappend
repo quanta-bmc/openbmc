@@ -1,11 +1,12 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-SRC_URI = "git://github.com/quanta-bmc/phosphor-pid-control.git;protocol=git"
-SRC_URI += "file://config-8ssd.json"
-SRC_URI += "file://config-2ssd.json"
-SRC_URI += "file://fan-control.sh"
-SRC_URI += "file://fan-reboot-control.sh"
-SRC_URI += "file://fan-no-sensor-protect.sh"
-SRCREV = "${AUTOREV}"
+SRC_URI_gsj = "git://github.com/quanta-bmc/phosphor-pid-control.git;protocol=git"
+SRCREV_gsj = "${AUTOREV}"
+
+FILESEXTRAPATHS_prepend_gsj := "${THISDIR}/${PN}:"
+SRC_URI_append_gsj = " file://config-8ssd.json"
+SRC_URI_append_gsj = " file://config-2ssd.json"
+SRC_URI_append_gsj = " file://fan-control.sh"
+SRC_URI_append_gsj = " file://fan-reboot-control.sh"
+SRC_URI_append_gsj = " file://fan-no-sensor-protect.sh"
 
 FILES_${PN} += "${datadir}/swampd/config-8ssd.json"
 FILES_${PN} += "${datadir}/swampd/config-2ssd.json"
@@ -20,7 +21,7 @@ RDEPENDS_${PN} += "bash"
 SYSTEMD_SERVICE_${PN} += "phosphor-pid-control.service"
 SYSTEMD_SERVICE_${PN} += "fan-reboot-control.service"
 
-do_install_append() {
+do_install_append_gsj() {
     install -d ${D}${datadir}/swampd
 
     install -d ${D}/${bindir}

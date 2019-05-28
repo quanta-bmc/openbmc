@@ -41,7 +41,6 @@
   properties: nvme capacityFault
   callback: check capacityFault
 
-
 - name: check capacityFault
   description: >
     ''
@@ -220,7 +219,6 @@
   properties: nvme BackupDeviceFault
   callback: check BackupDeviceFault
 
-
 - name: check BackupDeviceFault
   description: >
     'If this condition passes at least three nvmes are running
@@ -244,6 +242,3 @@
   paths: nvme paths
   properties: nvme BackupDeviceFault
   error:  xyz::openbmc_project::Nvme::Status::Error::BackupDeviceFault
-
-  
-    

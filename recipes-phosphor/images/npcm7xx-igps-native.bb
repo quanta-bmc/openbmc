@@ -11,7 +11,7 @@ SRCREV = "311e0ee44b63341bd5760c72bb94daef2a8f87c2"
 
 S = "${WORKDIR}/git"
 
-do_install () {
+do_install() {
 	install -d ${IGPS_DIR}
 	cp -R ./* ${IGPS_DIR}
 }

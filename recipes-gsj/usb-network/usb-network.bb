@@ -1,4 +1,3 @@
-FILESEXTRAPATHS_append := "${THISDIR}/files:"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${QUANTABASE}/COPYING.apache-2.0;md5=34400b68072d710fecd0a2940a0d1658"
 
@@ -6,10 +5,12 @@ DEPENDS += "systemd"
 RDEPENDS_${PN} += "libsystemd"
 RDEPENDS_${PN} += "bash"
 
-SRC_URI += "file://usb_network.sh \
-           file://usb_network.service \
-           file://00-bmc-usb0.network \
-           file://usb0.network"
+FILESEXTRAPATHS_append_gsj := "${THISDIR}/files:"
+SRC_URI_append_gsj = " file://usb_network.sh \
+                       file://usb_network.service \
+                       file://00-bmc-usb0.network \
+                       file://usb0.network \
+                     "
 
 do_install() {
     install -d ${D}/${sbindir}

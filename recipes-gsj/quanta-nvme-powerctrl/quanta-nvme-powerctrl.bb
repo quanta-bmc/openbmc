@@ -4,21 +4,20 @@ PR = "r1"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${QUANTABASE}/COPYING.apache-2.0;md5=34400b68072d710fecd0a2940a0d1658"
 
-FILESEXTRAPATHS_append := "${THISDIR}/files:"
-
 inherit systemd obmc-phosphor-systemd
 
 DEPENDS += "systemd"
 RDEPENDS_${PN} += "libsystemd"
 RDEPENDS_${PN} += "bash"
 
-SRC_URI +=  "file://init_once.sh \
-             file://nvme_powermanager.sh \
-             file://nvme_gpio.service \
-             file://nvme_powermanager.service \
-            "
+FILESEXTRAPATHS_append := "${THISDIR}/files:"
+SRC_URI_append_gsj = " file://init_once.sh \
+                       file://nvme_powermanager.sh \
+                       file://nvme_gpio.service \
+                       file://nvme_powermanager.service \
+                     "
 
-do_install () {
+do_install() {
     install -d ${D}${bindir}
     install -m 0755 ${WORKDIR}/init_once.sh ${D}${bindir}/
     install -m 0755 ${WORKDIR}/nvme_powermanager.sh ${D}${bindir}/

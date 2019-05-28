@@ -18,8 +18,8 @@ DEPENDS += "nlohmann-json"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-SRC_URI := "git://github.com/quanta-bmc/phosphor-nvme.git;protocol=git"
-SRCREV := "${AUTOREV}"
+SRC_URI_gsj := "git://github.com/quanta-bmc/phosphor-nvme.git;protocol=git"
+SRCREV_gsj := "${AUTOREV}"
 S = "${WORKDIR}/git"
 
 DBUS_SERVICE_${PN} = "xyz.openbmc_project.nvme.manager.service"

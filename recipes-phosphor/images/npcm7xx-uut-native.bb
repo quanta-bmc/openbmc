@@ -12,7 +12,7 @@ SRCREV = "172f280658cb4654bf4d1a16c00df4f7c6c6e7dd"
 
 S = "${WORKDIR}/git"
 
-do_install () {
+do_install() {
 	install release/Uartupdatetool ${IGPS_IMAGE_PROGRAMMING_DIR}/Uartupdatetool
 }
 

@@ -7,7 +7,8 @@ inherit native
 
 PROVIDES += "virtual/phosphor-led-manager-config-native"
 
-SRC_URI += "file://led.yaml"
+SRC_URI_append_gsj = " file://led.yaml"
+
 S = "${WORKDIR}"
 
 do_install() {

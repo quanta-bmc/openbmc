@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${PHOSPHORBASE}/COPYING.apache-2.0;md5=34400b68072d71
 inherit native
 inherit phosphor-ipmi-fru
 
-SRC_URI += "file://extra-properties.yaml"
+SRC_URI_append_gsj = " file://extra-properties.yaml"
 
 PROVIDES += "virtual/phosphor-ipmi-fru-properties"
 

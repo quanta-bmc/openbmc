@@ -12,7 +12,7 @@ SRCREV = "74b3fea803b0cdb194ffe9c237e03194620c1ee3"
 
 S = "${WORKDIR}/git"
 
-do_install () {
+do_install() {
 	install deliverables/linux/release/signit ${IGPS_IMAGE_GENERATION_DIR}/signit
 }
 

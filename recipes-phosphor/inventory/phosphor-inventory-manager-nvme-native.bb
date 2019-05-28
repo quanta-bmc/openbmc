@@ -8,7 +8,7 @@ inherit phosphor-inventory-manager
 
 PROVIDES += "virtual/phosphor-inventory-manager-nvme"
 
-SRC_URI += "file://nvme.yaml"
+SRC_URI_append_gsj = " file://nvme.yaml"
 
 S = "${WORKDIR}"
 

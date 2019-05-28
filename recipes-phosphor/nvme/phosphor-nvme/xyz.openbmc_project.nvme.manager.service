@@ -9,4 +9,4 @@ BusName=xyz.openbmc_project.nvme.manager
 SyslogIdentifier=phosphor-nvme
 
 [Install]
-WantedBy={SYSTEMD_DEFAULT_TARGET}
+WantedBy=multi-user.target
