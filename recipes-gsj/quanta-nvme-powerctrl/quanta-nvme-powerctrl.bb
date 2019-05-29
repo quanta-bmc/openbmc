@@ -11,11 +11,11 @@ RDEPENDS_${PN} += "libsystemd"
 RDEPENDS_${PN} += "bash"
 
 FILESEXTRAPATHS_append := "${THISDIR}/files:"
-SRC_URI_append_gsj = " file://init_once.sh \
-                       file://nvme_powermanager.sh \
-                       file://nvme_gpio.service \
-                       file://nvme_powermanager.service \
-                     "
+SRC_URI_append = " file://init_once.sh \
+                   file://nvme_powermanager.sh \
+                   file://nvme_gpio.service \
+                   file://nvme_powermanager.service \
+                 "
 
 do_install() {
     install -d ${D}${bindir}

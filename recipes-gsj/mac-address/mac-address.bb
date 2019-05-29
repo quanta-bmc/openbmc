@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_append_gsj := "${THISDIR}/files:"
+FILESEXTRAPATHS_append := "${THISDIR}/files:"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${QUANTABASE}/COPYING.apache-2.0;md5=34400b68072d710fecd0a2940a0d1658"
 
@@ -15,10 +15,10 @@ DEPENDS += "phosphor-logging"
 INSANE_SKIP_${PN} += "installed-vs-shipped"
 FILES_${PN} += "${libdir}/*"
 
-FILESEXTRAPATHS_prepend_gsj := "${THISDIR}/${PN}:"
-SRC_URI_append_gsj = " file://mac-address.cpp"
-SRC_URI_append_gsj = " file://mac-address.hpp"
-SRC_URI_append_gsj = " file://mac-address.service"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI_append = " file://mac-address.cpp"
+SRC_URI_append = " file://mac-address.hpp"
+SRC_URI_append = " file://mac-address.service"
 
 S = "${WORKDIR}"
 

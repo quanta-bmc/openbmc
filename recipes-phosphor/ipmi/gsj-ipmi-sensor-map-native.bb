@@ -8,7 +8,7 @@ inherit phosphor-ipmi-host
 
 PROVIDES += "virtual/phosphor-ipmi-sensor-inventory"
 
-SRC_URI_append_gsj = " file://config.yaml"
+SRC_URI_append = " file://config.yaml"
 
 S = "${WORKDIR}"
 

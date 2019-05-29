@@ -6,14 +6,14 @@ LIC_FILES_CHKSUM = "file://${QUANTABASE}/COPYING.apache-2.0;md5=34400b68072d710f
 inherit native
 inherit phosphor-ipmi-host
 
-SRC_URI_append_gsj = " file://config.yaml"
+SRC_URI_append = " file://config.yaml"
 
 PROVIDES += "virtual/phosphor-ipmi-fru-read-inventory"
 
 S = "${WORKDIR}"
 
 do_install() {
-        DEST=${D}${config_datadir}
-        install -d ${DEST}
-        install config.yaml ${DEST}
+    DEST=${D}${config_datadir}
+    install -d ${DEST}
+    install config.yaml ${DEST}
 }

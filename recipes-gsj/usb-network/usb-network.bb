@@ -5,8 +5,8 @@ DEPENDS += "systemd"
 RDEPENDS_${PN} += "libsystemd"
 RDEPENDS_${PN} += "bash"
 
-FILESEXTRAPATHS_append_gsj := "${THISDIR}/files:"
-SRC_URI_append_gsj = " file://usb_network.sh \
+FILESEXTRAPATHS_append := "${THISDIR}/files:"
+SRC_URI_append = " file://usb_network.sh \
                        file://usb_network.service \
                        file://00-bmc-usb0.network \
                        file://usb0.network \
@@ -21,7 +21,6 @@ do_install() {
 
     install -d ${D}${sysconfdir_native}/systemd/network/
     install -m 0644 ${WORKDIR}/00-bmc-usb0.network ${D}${sysconfdir_native}/systemd/network
-
 }
 
 NATIVE_SYSTEMD_SUPPORT = "1"

@@ -7,7 +7,7 @@ inherit native
 
 PROVIDES += "virtual/phosphor-led-manager-config-native"
 
-SRC_URI_append_gsj = " file://led.yaml"
+SRC_URI_append = " file://led.yaml"
 
 S = "${WORKDIR}"
 

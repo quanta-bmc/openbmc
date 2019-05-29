@@ -6,14 +6,14 @@ LIC_FILES_CHKSUM = "file://${PHOSPHORBASE}/COPYING.apache-2.0;md5=34400b68072d71
 inherit native
 inherit phosphor-ipmi-fru
 
-SRC_URI_append_gsj = " file://extra-properties.yaml"
+SRC_URI_append = " file://extra-properties.yaml"
 
 PROVIDES += "virtual/phosphor-ipmi-fru-properties"
 
 S = "${WORKDIR}"
 
 do_install() {
-        DEST=${D}${properties_datadir}
-        install -d ${DEST}
-        install extra-properties.yaml ${DEST}
+    DEST=${D}${properties_datadir}
+    install -d ${DEST}
+    install extra-properties.yaml ${DEST}
 }

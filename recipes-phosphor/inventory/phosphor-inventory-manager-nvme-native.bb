@@ -8,11 +8,11 @@ inherit phosphor-inventory-manager
 
 PROVIDES += "virtual/phosphor-inventory-manager-nvme"
 
-SRC_URI_append_gsj = " file://nvme.yaml"
+SRC_URI_append = " file://nvme.yaml"
 
 S = "${WORKDIR}"
 
 do_install() {
-        install -d ${D}${base_datadir}/events.d/
-        install nvme.yaml ${D}${base_datadir}/events.d/nvme.yaml
+    install -d ${D}${base_datadir}/events.d/
+    install nvme.yaml ${D}${base_datadir}/events.d/nvme.yaml
 }
