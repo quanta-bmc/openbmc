@@ -1,4 +1,4 @@
-SRC_URI_gsj = "git://github.com/quanta-bmc/phosphor-pid-control.git;protocol=git"
+SRC_URI_gsj = "git://github.com/openbmc/phosphor-pid-control.git;protocol=git"
 SRCREV_gsj = "${AUTOREV}"
 
 FILESEXTRAPATHS_prepend_gsj := "${THISDIR}/${PN}:"
@@ -15,7 +15,6 @@ FILES_${PN} += "${bindir}/fan-reboot-control.sh"
 FILES_${PN} += "${bindir}/fan-no-sensor-protect.sh"
 
 inherit obmc-phosphor-systemd
-DEPENDS += "cli11"
 RDEPENDS_${PN} += "bash"
 
 SYSTEMD_SERVICE_${PN} += "phosphor-pid-control.service"
