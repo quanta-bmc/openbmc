@@ -12,8 +12,6 @@ function recovery_power()
     check_powergood $1
 }
 
-echo "Read Clock Gen Value is: $CLOCK_GEN_VALUE"
-
 ##Initial U2 present status
 for i in {0..7};
 do
