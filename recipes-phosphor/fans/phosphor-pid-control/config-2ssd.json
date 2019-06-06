@@ -245,8 +245,8 @@
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
-                        "positiveHysteresis": 0,
-                        "negativeHysteresis": 0,
+                        "positiveHysteresis": 0.0,
+                        "negativeHysteresis": 0.0,
                         "isCeiling": false,
                         "reading": {
                             "0": 25,
@@ -267,7 +267,7 @@
                             "15": 40,
                             "16": 42,
                             "17": 44,
-                            "18": 46,
+                            "18": 45,
                             "19": 50
                         },
                         "output": {
