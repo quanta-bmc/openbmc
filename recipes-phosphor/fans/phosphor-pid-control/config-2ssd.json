@@ -213,8 +213,8 @@
                         "outLim_max": 16000.0,
                         "slewNeg": 0.0,
                         "slewPos": 0.0,
-                        "positiveHysteresis": 1,
-                        "negativeHysteresis": 1
+                        "positiveHysteresis": 1.0,
+                        "negativeHysteresis": 1.0
                     }
                 },
                 {
@@ -234,8 +234,8 @@
                         "outLim_max": 16000.0,
                         "slewNeg": 0.0,
                         "slewPos": 0.0,
-                        "positiveHysteresis": 1,
-                        "negativeHysteresis": 1
+                        "positiveHysteresis": 1.0,
+                        "negativeHysteresis": 1.0
                     }
                 },
                 {
@@ -244,7 +244,7 @@
                     "inputs": ["KL0"],
                     "setpoint": 30.0,
                     "pid": {
-                        "samplePeriod": 0.1,
+                        "samplePeriod": 1.0,
                         "positiveHysteresis": 0,
                         "negativeHysteresis": 0,
                         "isCeiling": false,
@@ -271,25 +271,25 @@
                             "19": 50
                         },
                         "output": {
-                            "0": 5,
-                            "1": 5,
-                            "2": 6,
-                            "3": 6,
-                            "4": 7,
-                            "5": 7,
-                            "6": 9,
-                            "7": 9,
-                            "8": 11,
-                            "9": 13,
-                            "10": 15,
-                            "11": 18,
-                            "12": 21,
-                            "13": 25,
-                            "14": 30,
-                            "15": 35,
-                            "16": 40,
-                            "17": 45,
-                            "18": 50,
+                            "0": 10,
+                            "1": 10,
+                            "2": 10,
+                            "3": 10,
+                            "4": 10,
+                            "5": 10,
+                            "6": 20,
+                            "7": 30,
+                            "8": 40,
+                            "9": 50,
+                            "10": 60,
+                            "11": 73,
+                            "12": 76,
+                            "13": 79,
+                            "14": 82,
+                            "15": 86,
+                            "16": 90,
+                            "17": 90,
+                            "18": 100,
                             "19": 100
                         }
                     }
@@ -301,8 +301,8 @@
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
-                        "positiveHysteresis": 1,
-                        "negativeHysteresis": 1,
+                        "positiveHysteresis": 1.0,
+                        "negativeHysteresis": 1.0,
                         "isCeiling": false,
                         "reading": {
                             "0": 45,
@@ -357,8 +357,8 @@
                     "setpoint": 30.0,
                     "pid": {
                         "samplePeriod": 1.0,
-                        "positiveHysteresis": 1,
-                        "negativeHysteresis": 1,
+                        "positiveHysteresis": 1.0,
+                        "negativeHysteresis": 1.0,
                         "isCeiling": false,
                         "reading": {
                             "0": 45,
