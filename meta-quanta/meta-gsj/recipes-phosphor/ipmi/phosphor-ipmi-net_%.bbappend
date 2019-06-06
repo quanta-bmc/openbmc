@@ -1,0 +1,8 @@
+DEFAULT_RMCPP_IFACE := "eth1"
+RMCPP_IFACE := "${DEFAULT_RMCPP_IFACE}"
+
+ALT_RMCPP_IFACE = "usb0"
+SYSTEMD_SERVICE_${PN} += " \
+    ${PN}@${ALT_RMCPP_IFACE}.service \
+    ${PN}@${ALT_RMCPP_IFACE}.socket \
+    "
