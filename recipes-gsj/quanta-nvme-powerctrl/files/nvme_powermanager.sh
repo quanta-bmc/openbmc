@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $(dirname $0)/nvme_powerctrl_library.sh
+source /usr/libexec/nvme_powerctrl_library.sh
 U2_PRESENT_STATUS=( 1 1 1 1 1 1 1 1 )
 
 function recovery_power()

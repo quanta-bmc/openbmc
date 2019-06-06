@@ -4,7 +4,7 @@ PR = "r1"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${QUANTABASE}/COPYING.apache-2.0;md5=34400b68072d710fecd0a2940a0d1658"
 
-inherit systemd obmc-phosphor-systemd
+inherit systemd
 
 DEPENDS += "systemd"
 RDEPENDS_${PN} += "libsystemd"
@@ -22,7 +22,9 @@ do_install() {
     install -d ${D}${bindir}
     install -m 0755 ${WORKDIR}/init_once.sh ${D}${bindir}/
     install -m 0755 ${WORKDIR}/nvme_powermanager.sh ${D}${bindir}/
-    install -m 0755 ${WORKDIR}/nvme_powerctrl_library.sh ${D}${bindir}/
+
+    install -d ${D}${libexecdir}
+    install -m 0755 ${WORKDIR}/nvme_powerctrl_library.sh ${D}${libexecdir}/
 
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/nvme_gpio.service ${D}${systemd_unitdir}/system

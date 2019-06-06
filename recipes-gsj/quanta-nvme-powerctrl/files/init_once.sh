@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $(dirname $0)/nvme_powerctrl_library.sh
+source /usr/libexec/nvme_powerctrl_library.sh
 
 function set_gpio() {
   #$1 gpio pin
