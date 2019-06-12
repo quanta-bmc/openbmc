@@ -21,10 +21,10 @@ fan_tach_path=( '/xyz/openbmc_project/sensors/fan_tach/Fan0_0_RPM'
                 '/xyz/openbmc_project/sensors/fan_tach/Fan2_1_RPM'
                 )
 
-hwmon_path="$(mapper get-service ${fan_tach_path[0]})"
 check_fail_flag=0
 current_fan_state=()
 while true; do
+    hwmon_path="$(mapper get-service ${fan_tach_path[0]})"
     for i in ${!fan_tach_path[@]};
     do
         current_fan_state[$i%2]=$(get_fan_state $hwmon_path ${fan_tach_path[$i]})
