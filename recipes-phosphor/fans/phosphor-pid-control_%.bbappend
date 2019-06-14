@@ -21,18 +21,15 @@ SYSTEMD_SERVICE_${PN}_append_gsj = " phosphor-pid-control.service"
 SYSTEMD_SERVICE_${PN}_append_gsj = " fan-reboot-control.service"
 
 do_install_append_gsj() {
-    install -d ${D}${datadir}/swampd
-
     install -d ${D}/${bindir}
     install -m 0755 ${WORKDIR}/fan-control.sh ${D}/${bindir}
+    install -m 0755 ${WORKDIR}/fan-full-speed.sh ${D}/${bindir}
 
+    install -d ${D}${datadir}/swampd
     install -m 0644 -D ${WORKDIR}/config-8ssd.json \
         ${D}${datadir}/swampd/config-8ssd.json
     install -m 0644 -D ${WORKDIR}/config-2ssd.json \
         ${D}${datadir}/swampd/config-2ssd.json
-
-    install -d ${D}/${bindir}
-    install -m 0755 ${WORKDIR}/fan-full-speed.sh ${D}/${bindir}
 
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/phosphor-pid-control.service \
