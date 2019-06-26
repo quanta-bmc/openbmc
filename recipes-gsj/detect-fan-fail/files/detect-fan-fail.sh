@@ -29,7 +29,7 @@ while true; do
     do
         current_fan_state[$i%2]=$(get_fan_state $hwmon_path ${fan_tach_path[$i]})
 
-        #Compare state of dual rotor with CriticalAlarmLow to check if fan fail
+        #Compare state of dual rotors with CriticalAlarmLow to check if fan fail
         if [ ${#current_fan_state[@]} -eq 2 ];then
             if [ "${current_fan_state[0]}" == "true" ] && \
             [ "${current_fan_state[1]}" == "true" ] ;then
