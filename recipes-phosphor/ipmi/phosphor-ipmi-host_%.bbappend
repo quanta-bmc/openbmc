@@ -1,6 +1,5 @@
-SRC_URI_gsj := "git://github.com/quanta-bmc/phosphor-host-ipmid.git"
-SRC_URI_append_gsj = " file://merge_yamls.py"
-SRC_URI_append_gsj = " file://entity.yaml"
+SRC_URI_remove_gsj = "git://github.com/openbmc/phosphor-host-ipmid"
+SRC_URI_prepend_gsj := "git://github.com/quanta-bmc/phosphor-host-ipmid.git"
 
 SRCREV_gsj := "${AUTOREV}"
 
