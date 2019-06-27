@@ -9,12 +9,12 @@ inherit systemd
 DEPENDS += "systemd"
 RDEPENDS_${PN} += "bash"
 
-FILESEXTRAPATHS_append_gsj := "${THISDIR}/files:"
-SRC_URI_append_gsj =  " file://detect-fan-fail.sh \
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+SRC_URI_append =  " file://detect-fan-fail.sh \
                         file://detect-fan-fail.service \
                       "
 
-do_install_append_gsj() {
+do_install() {
     install -d ${D}${bindir}
     install -m 0755 ${WORKDIR}/detect-fan-fail.sh ${D}${bindir}/
 

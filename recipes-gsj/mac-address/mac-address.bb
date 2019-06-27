@@ -1,5 +1,5 @@
-SRC_URI_gsj = "git://github.com/quanta-bmc/mac-address.git;protocol=git"
-SRCREV_gsj = "${AUTOREV}"
+SRC_URI = "git://github.com/quanta-bmc/mac-address.git;protocol=git"
+SRCREV = "${AUTOREV}"
 
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${QUANTABASE}/COPYING.apache-2.0;md5=34400b68072d710fecd0a2940a0d1658"

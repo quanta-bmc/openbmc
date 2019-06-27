@@ -17,8 +17,8 @@ DEPENDS += "sdbusplus-native"
 DEPENDS += "autoconf-archive-native"
 DEPENDS += "phosphor-sel-logger"
 
-SRC_URI_gsj = "git://github.com/quanta-bmc/phosphor-ecc.git;protocol=git"
-SRCREV_gsj := "${AUTOREV}"
+SRC_URI = "git://github.com/quanta-bmc/phosphor-ecc.git;protocol=git"
+SRCREV := "${AUTOREV}"
 
-FILESEXTRAPATHS_prepend_gsj := "${THISDIR}/${PN}:"
-DBUS_SERVICE_${PN}_append_gsj = " phosphor-ecc.service"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+DBUS_SERVICE_${PN}_append = " phosphor-ecc.service"
