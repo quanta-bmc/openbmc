@@ -11,7 +11,6 @@ FLASH_UBI_RWFS_TXT_SIZE = "6MiB"
 
 OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " usb-network"
 OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " phosphor-pwmtacho"
-OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " phosphor-cooling-type"
 OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " google-ipmi-sys"
 OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " google-ipmi-i2c"
 OBMC_IMAGE_EXTRA_INSTALL_append_gsj = " phosphor-sel-logger"
