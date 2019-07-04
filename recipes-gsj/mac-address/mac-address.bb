@@ -7,6 +7,9 @@ LIC_FILES_CHKSUM = "file://${QUANTABASE}/COPYING.apache-2.0;md5=34400b68072d710f
 inherit autotools pkgconfig
 inherit systemd
 
+DEPENDS += "systemd"
+DEPENDS += "autoconf-archive-native"
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI_append = " file://mac-address.service"
 
