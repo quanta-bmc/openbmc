@@ -1,6 +1,3 @@
-SRC_URI_gsj = "git://github.com/quanta-bmc/phosphor-pid-control.git;protocol=git"
-SRCREV_gsj = "${AUTOREV}"
-
 FILESEXTRAPATHS_prepend_gsj := "${THISDIR}/${PN}:"
 SRC_URI_append_gsj = " file://config-8ssd.json"
 SRC_URI_append_gsj = " file://config-2ssd.json"
