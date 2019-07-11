@@ -2,14 +2,14 @@ FILESEXTRAPATHS_prepend_gsj := "${THISDIR}/${PN}:"
 SRC_URI_append_gsj = " file://config-8ssd.json"
 SRC_URI_append_gsj = " file://config-2ssd.json"
 SRC_URI_append_gsj = " file://fan-control.sh"
-SRC_URI_append_gsj = " file://fan-90-duty-speed.sh"
+SRC_URI_append_gsj = " file://fan-default-speed.sh"
 SRC_URI_append_gsj = " file://phosphor-pid-control.service"
 SRC_URI_append_gsj = " file://fan-reboot-control.service"
 
 FILES_${PN}_append_gsj = " ${datadir}/swampd/config-8ssd.json"
 FILES_${PN}_append_gsj = " ${datadir}/swampd/config-2ssd.json"
 FILES_${PN}_append_gsj = " ${bindir}/fan-control.sh"
-FILES_${PN}_append_gsj = " ${bindir}/fan-90-duty-speed.sh"
+FILES_${PN}_append_gsj = " ${bindir}/fan-default-speed.sh"
 
 inherit systemd
 RDEPENDS_${PN} += "bash"
@@ -20,7 +20,7 @@ SYSTEMD_SERVICE_${PN}_append_gsj = " fan-reboot-control.service"
 do_install_append_gsj() {
     install -d ${D}/${bindir}
     install -m 0755 ${WORKDIR}/fan-control.sh ${D}/${bindir}
-    install -m 0755 ${WORKDIR}/fan-90-duty-speed.sh ${D}/${bindir}
+    install -m 0755 ${WORKDIR}/fan-default-speed.sh ${D}/${bindir}
 
     install -d ${D}${datadir}/swampd
     install -m 0644 -D ${WORKDIR}/config-8ssd.json \
