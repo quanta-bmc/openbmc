@@ -1,0 +1,11 @@
+[Unit]
+Description=Set Fan to 90 Duty as Booting Up
+DefaultDependencies=no
+After=swap.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/fan-default-speed.sh
+
+[Install]
+WantedBy=swap.target

@@ -5,6 +5,7 @@ SRC_URI_append_gsj = " file://fan-control.sh"
 SRC_URI_append_gsj = " file://fan-default-speed.sh"
 SRC_URI_append_gsj = " file://phosphor-pid-control.service"
 SRC_URI_append_gsj = " file://fan-reboot-control.service"
+SRC_URI_append_gsj = " file://fan-boot-control.service"
 
 FILES_${PN}_append_gsj = " ${datadir}/swampd/config-8ssd.json"
 FILES_${PN}_append_gsj = " ${datadir}/swampd/config-2ssd.json"
@@ -16,6 +17,7 @@ RDEPENDS_${PN} += "bash"
 
 SYSTEMD_SERVICE_${PN}_append_gsj = " phosphor-pid-control.service"
 SYSTEMD_SERVICE_${PN}_append_gsj = " fan-reboot-control.service"
+SYSTEMD_SERVICE_${PN}_append_gsj = " fan-boot-control.service"
 
 do_install_append_gsj() {
     install -d ${D}/${bindir}
@@ -32,5 +34,7 @@ do_install_append_gsj() {
     install -m 0644 ${WORKDIR}/phosphor-pid-control.service \
         ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/fan-reboot-control.service \
+        ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/fan-boot-control.service \
         ${D}${systemd_unitdir}/system
 }
