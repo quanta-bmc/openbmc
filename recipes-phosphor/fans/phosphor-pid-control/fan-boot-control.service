@@ -1,11 +1,14 @@
 [Unit]
 Description=Set Fan to 90 Duty as Booting Up
 DefaultDependencies=no
-After=swap.target
+Before=swap.target local-fs-pre.target paths.target slices.target \
+    systemd-udevd-control.socket sys-kernel-debug.mount \
+    systemd-ask-password-console.path systemd-ask-password-wall.path \
+    systemd-remount-fs.service systemd-sysctl.service -.slice
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/fan-default-speed.sh
 
 [Install]
-WantedBy=swap.target
+WantedBy=multi-user.target
