@@ -1,14 +1,10 @@
 [Unit]
 Description=Set Fan to Default Duty as Booting Up
 DefaultDependencies=no
-Before=swap.target local-fs-pre.target paths.target slices.target \
-    systemd-udevd-control.socket sys-kernel-debug.mount \
-    systemd-ask-password-console.path systemd-ask-password-wall.path \
-    systemd-remount-fs.service systemd-sysctl.service -.slice
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/fan-default-speed.sh
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=sysinit.target
