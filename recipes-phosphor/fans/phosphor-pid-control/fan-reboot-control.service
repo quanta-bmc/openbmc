@@ -1,5 +1,5 @@
 [Unit]
-Description=Set Fan to 90 Duty as Rebooting
+Description=Set Fan to Default Duty as Rebooting
 DefaultDependencies=no
 After=shutdown.target
 
