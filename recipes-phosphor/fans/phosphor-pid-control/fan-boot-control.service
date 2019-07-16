@@ -1,5 +1,5 @@
 [Unit]
-Description=Set Fan to 90 Duty as Booting Up
+Description=Set Fan to Default Duty as Booting Up
 DefaultDependencies=no
 Before=swap.target local-fs-pre.target paths.target slices.target \
     systemd-udevd-control.socket sys-kernel-debug.mount \
