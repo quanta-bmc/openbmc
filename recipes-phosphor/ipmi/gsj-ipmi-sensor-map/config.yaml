@@ -112,7 +112,7 @@
   offsetB: 0
   bExp: 0
   rExp: -2
-  scale: -3
+  scale: -3.1079
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
@@ -158,7 +158,7 @@
   offsetB: 4
   bExp: 2
   rExp: -2
-  scale: -6
+  scale: -6.1079
   mutability: Mutability::Write|Mutability::Read
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
