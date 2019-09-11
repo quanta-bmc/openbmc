@@ -19,6 +19,8 @@ SYSTEMD_SERVICE_${PN}_append_gsj = " phosphor-pid-control.service"
 SYSTEMD_SERVICE_${PN}_append_gsj = " fan-reboot-control.service"
 SYSTEMD_SERVICE_${PN}_append_gsj = " fan-boot-control.service"
 
+SRCREV := "6aae76f435209f6324c18f0ba3376ade7f35b848"
+
 do_install_append_gsj() {
     install -d ${D}/${bindir}
     install -m 0755 ${WORKDIR}/fan-control.sh ${D}/${bindir}
