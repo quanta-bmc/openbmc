@@ -1,0 +1,30 @@
+From e9bd4ef9dab8b027f119bb61625389a0b77e6328 Mon Sep 17 00:00:00 2001
+From: Fran Hsu <Fran.Hsu@quantatw.com>
+Date: Mon, 27 May 2019 17:33:49 +0800
+Subject: [PATCH] meta-gsj:phosphor-network: Add property to seivice file.
+
+Add RestartSec property to xyz.openbmc_project.Network.service file.
+The GSJ machine will get MAC address from FRU data, and apply it to system,
+but it will cause xyz.openbmc_project.Network.service restart failed.
+This fix can prevent the xyz.openbmc_project.Network.service restart failed.
+
+Signed-off-by: Fran Hsu <Fran.Hsu@quantatw.com>
+---
+ xyz.openbmc_project.Network.service.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xyz.openbmc_project.Network.service.in b/xyz.openbmc_project.Network.service.in
+index a478462..7a455c4 100644
+--- a/xyz.openbmc_project.Network.service.in
++++ b/xyz.openbmc_project.Network.service.in
+@@ -11,6 +11,6 @@ BusName=@DEFAULT_BUSNAME@
+ RuntimeDirectory = network
+ RuntimeDirectoryPreserve = yes
+ StateDirectory = network
+-
++RestartSec=10
+ [Install]
+ WantedBy=@SYSTEMD_TARGET@
+-- 
+2.21.0
+
