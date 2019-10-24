@@ -1,1 +1,7 @@
-/sys/devices/platform/ahb/ahb:apb/f008a000.i2c/i2c-10/10-0055/eeprom
+fruBusNum=10
+fruAddr=0x55
+numberMac=4
+mac1=eth1
+mac2=usb0_dev
+mac3=usb0_host
+mac4=eth0
