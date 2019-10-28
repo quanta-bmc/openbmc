@@ -7,8 +7,7 @@ ExecStart=/usr/bin/hotswap-change-setting.sh
 Restart=no
 Type=oneshot
 RemainAfterExit=true
-StandardOutput=tty
-StandardError=tty
+StandardOutput=syslog
 
 [Install]
 WantedBy=multi-user.target
