@@ -10,17 +10,17 @@ inherit systemd
 DEPENDS += "systemd"
 DEPENDS += "autoconf-archive-native"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
-SRC_URI_append = " file://mac-address.service"
-SRC_URI_append = " file://config.txt"
+FILESEXTRAPATHS_prepend_gsj := "${THISDIR}/files:"
+SRC_URI_append_gsj = " file://mac-address.service"
+SRC_URI_append_gsj = " file://config.txt"
 
-FILES_${PN}_append = " ${datadir}/mac-address/config.txt"
+FILES_${PN}_append_gsj = " ${datadir}/mac-address/config.txt"
 
 HASHSTYLE = "gnu"
 S = "${WORKDIR}/git"
 CXXFLAGS += "-std=c++17"
 
-do_install_append() {
+do_install_append_gsj() {
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/mac-address.service \
         ${D}${systemd_unitdir}/system
