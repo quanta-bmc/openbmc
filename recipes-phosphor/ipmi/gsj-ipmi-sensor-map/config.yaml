@@ -374,6 +374,7 @@
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
   sensorNamePattern: nameLeaf
+  sensorUnits1: 0x80
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -391,6 +392,7 @@
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
   sensorNamePattern: nameLeaf
+  sensorUnits1: 0x80
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -408,6 +410,7 @@
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
   sensorNamePattern: nameLeaf
+  sensorUnits1: 0x80
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -425,6 +428,7 @@
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
   sensorNamePattern: nameLeaf
+  sensorUnits1: 0x80
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -442,6 +446,7 @@
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
   sensorNamePattern: nameLeaf
+  sensorUnits1: 0x80
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -459,6 +464,7 @@
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
   sensorNamePattern: nameLeaf
+  sensorUnits1: 0x80
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -476,6 +482,7 @@
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
   sensorNamePattern: nameLeaf
+  sensorUnits1: 0x80
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
@@ -493,6 +500,7 @@
   serviceInterface: org.freedesktop.DBus.Properties
   readingType: readingData
   sensorNamePattern: nameLeaf
+  sensorUnits1: 0x80
   unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
   interfaces:
     xyz.openbmc_project.Sensor.Value:
