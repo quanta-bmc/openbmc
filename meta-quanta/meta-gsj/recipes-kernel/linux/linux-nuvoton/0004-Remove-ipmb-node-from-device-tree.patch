@@ -1,0 +1,55 @@
+From 8b89ced475650d8f2cbb0d2a20f08693215e5896 Mon Sep 17 00:00:00 2001
+From: Fran Hsu <Fran.Hsu@quantatw.com>
+Date: Wed, 5 Jun 2019 17:25:41 +0800
+Subject: [PATCH] Remove ipmb node from device tree.
+
+Signed-off-by: Fran Hsu <Fran.Hsu@quantatw.com>
+---
+ arch/arm/boot/dts/nuvoton-npcm730-gsj.dts | 18 +++---------------
+ 1 file changed, 3 insertions(+), 15 deletions(-)
+
+diff --git a/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts b/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts
+index 4fc9b80f8114..9d32a5b19fb6 100644
+--- a/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts
++++ b/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts
+@@ -5,7 +5,7 @@
+ #include "nuvoton-npcm730.dtsi"
+ #include "nuvoton-npcm730-gsj-gpio.dtsi"
+ / {
+-	model = "Quanta GSJ Board (Device Tree v10)";
++	model = "Quanta GSJ Board (Device Tree v12)";
+ 	compatible = "nuvoton,npcm750";
+ 
+ 	aliases {
+@@ -265,26 +265,14 @@
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+ 				bus-frequency = <100000>;
+-				status = "okay";
+-
+-				ipmb@40000010 {
+-					compatible = "slave-mqueue";
+-					reg = <0x40000010>;
+-					status = "okay";
+-				};
++				status = "disabled";
+ 			};
+ 
+ 			i2c14: i2c@8e000 {
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+ 				bus-frequency = <100000>;
+-				status = "okay";
+-
+-				ipmb@40000012 {
+-					compatible = "slave-mqueue";
+-					reg = <0x40000012>;
+-					status = "okay";
+-				};
++				status = "disabled";
+ 			};
+ 
+ 			i2c15: i2c@8f000 {
+-- 
+2.21.0
+
