@@ -1,0 +1,21 @@
+diff --git a/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts b/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts
+index 801ed73..d7c2bd2 100644
+--- a/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts
++++ b/arch/arm/boot/dts/nuvoton-npcm730-gsj.dts
+@@ -38,6 +38,7 @@
+ 		gmac0: eth@f0802000 {
+ 			phy-mode = "rgmii-id";
+ 			status = "okay";
++			snps,eee-force-disable;
+ 		};
+ 
+ 		mc: memory-controller@f0824000 {
+@@ -47,7 +48,7 @@
+ 		};
+ 
+ 		emc0: eth@f0825000 {
+-			phy-mode = "rmii";
++			//phy-mode = "rmii";
+ 			use-ncsi;
+ 			status = "okay";
+ 		};
