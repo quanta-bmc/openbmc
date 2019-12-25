@@ -1,0 +1,244 @@
+- name: nvme paths
+  description: >
+    'nvme has 8 ssd'
+  class: group
+  group: path
+  members:
+    - meta: PATH
+      path: /xyz/openbmc_project/nvme/1
+    - meta: PATH
+      path: /xyz/openbmc_project/nvme/2   
+    - meta: PATH
+      path: /xyz/openbmc_project/nvme/3 
+    - meta: PATH
+      path: /xyz/openbmc_project/nvme/4 
+    - meta: PATH
+      path: /xyz/openbmc_project/nvme/5 
+    - meta: PATH
+      path: /xyz/openbmc_project/nvme/6 
+    - meta: PATH
+      path: /xyz/openbmc_project/nvme/7 
+    - meta: PATH
+      path: /xyz/openbmc_project/nvme/8
+
+- name: nvme capacityFault
+  description: >
+    'Monitor the capacityFault of each nvme.'
+  class: group
+  group: property
+  type: boolean
+  members:
+    - interface: xyz.openbmc_project.Nvme.Status
+      meta: PRESENT
+      property: CapacityFault
+
+- name: watch nvme capacityFault
+  description: >
+    ''
+  class: watch
+  watch: property
+  paths: nvme paths
+  properties: nvme capacityFault
+  callback: check capacityFault
+
+- name: check capacityFault
+  description: >
+    ''
+  class: condition
+  condition: count
+  paths: nvme paths
+  properties: nvme capacityFault
+  callback: log capacityFault
+  countop: '=='
+  countbound: 1
+  op: '=='
+  bound: true
+  oneshot: true
+
+- name: log capacityFault
+  description: >
+    'log an event.'
+  class: callback
+  callback: elog
+  paths: nvme paths
+  properties: nvme capacityFault
+  error:  xyz::openbmc_project::Nvme::Status::Error::CapacityFault 
+
+- name: nvme TemperatureFault
+  description: >
+    'Monitor the TemperatureFault of each nvme.'
+  class: group
+  group: property
+  type: boolean
+  members:
+    - interface: xyz.openbmc_project.Nvme.Status
+      meta: PRESENT
+      property: TemperatureFault
+
+- name: watch nvme TemperatureFault
+  description: >
+    'Trigger logic on nvme TemperatureFault changes.'
+  class: watch
+  watch: property
+  paths: nvme paths
+  properties: nvme TemperatureFault
+  callback: check TemperatureFault
+
+
+- name: check TemperatureFault
+  description: >
+    'If this condition passes at least three nvmes are running
+    too hot. '
+  class: condition
+  condition: count
+  paths: nvme paths
+  properties: nvme TemperatureFault
+  callback: log TemperatureFault
+  countop: '=='
+  countbound: 1
+  op: '=='
+  bound: true
+  oneshot: true
+
+- name: log TemperatureFault
+  description: >
+    'log an event.'
+  class: callback
+  callback: elog
+  paths: nvme paths
+  properties: nvme TemperatureFault
+  error:  xyz::openbmc_project::Nvme::Status::Error::TemperatureFault
+
+- name: nvme DegradesFault
+  description: >
+    'Monitor the DegradesFault of each nvme.'
+  class: group
+  group: property
+  type: boolean
+  members:
+    - interface: xyz.openbmc_project.Nvme.Status
+      meta: PRESENT
+      property: DegradesFault
+
+- name: watch nvme DegradesFault
+  description: >
+    'Trigger logic on nvme DegradesFault changes.'
+  class: watch
+  watch: property
+  paths: nvme paths
+  properties: nvme DegradesFault
+  callback: check DegradesFault
+
+
+- name: check DegradesFault
+  description: >
+    'If this condition passes at least three nvmes are running
+    too hot. '
+  class: condition
+  condition: count
+  paths: nvme paths
+  properties: nvme DegradesFault
+  callback: log DegradesFault
+  countop: '=='
+  countbound: 1
+  op: '=='
+  bound: true
+  oneshot: true
+
+- name: log DegradesFault
+  description: >
+    'log an event.'
+  class: callback
+  callback: elog
+  paths: nvme paths
+  properties: nvme DegradesFault
+  error:  xyz::openbmc_project::Nvme::Status::Error::DegradesFault
+
+- name: nvme MediaFault
+  description: >
+    'Monitor the MediaFault of each nvme.'
+  class: group
+  group: property
+  type: boolean
+  members:
+    - interface: xyz.openbmc_project.Nvme.Status
+      meta: PRESENT
+      property: MediaFault
+
+- name: watch nvme MediaFault
+  description: >
+    'Trigger logic on nvme MediaFault changes.'
+  class: watch
+  watch: property
+  paths: nvme paths
+  properties: nvme MediaFault
+  callback: check MediaFault
+
+
+- name: check MediaFault
+  description: >
+    'If this condition passes at least three nvmes are running
+    too hot. '
+  class: condition
+  condition: count
+  paths: nvme paths
+  properties: nvme MediaFault
+  callback: log MediaFault
+  countop: '=='
+  countbound: 1
+  op: '=='
+  bound: true
+  oneshot: true
+
+- name: log MediaFault
+  description: >
+    'log an event.'
+  class: callback
+  callback: elog
+  paths: nvme paths
+  properties: nvme MediaFault
+  error:  xyz::openbmc_project::Nvme::Status::Error::MediaFault
+
+- name: nvme BackupDeviceFault
+  description: >
+    'Monitor the BackupDeviceFault of each nvme.'
+  class: group
+  group: property
+  type: boolean
+  members:
+    - interface: xyz.openbmc_project.Nvme.Status
+      meta: PRESENT
+      property: BackupDeviceFault
+
+- name: watch nvme BackupDeviceFault
+  description: >
+    'Trigger logic on nvme BackupDeviceFault changes.'
+  class: watch
+  watch: property
+  paths: nvme paths
+  properties: nvme BackupDeviceFault
+  callback: check BackupDeviceFault
+
+- name: check BackupDeviceFault
+  description: >
+    'If this condition passes at least three nvmes are running
+    too hot. '
+  class: condition
+  condition: count
+  paths: nvme paths
+  properties: nvme BackupDeviceFault
+  callback: log BackupDeviceFault
+  countop: '=='
+  countbound: 1
+  op: '=='
+  bound: true
+  oneshot: true
+
+- name: log BackupDeviceFault
+  description: >
+    'log an event.'
+  class: callback
+  callback: elog
+  paths: nvme paths
+  properties: nvme BackupDeviceFault
+  error:  xyz::openbmc_project::Nvme::Status::Error::BackupDeviceFault
