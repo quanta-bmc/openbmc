@@ -1,0 +1,30 @@
+From ee0860896a2ca8a201ad1bc30dc401e997a8942b Mon Sep 17 00:00:00 2001
+From: Fran Hsu <fran.hsu@quanta.corp-partner.google.com>
+Date: Mon, 27 May 2019 14:11:58 +0800
+Subject: [PATCH] i2c:npcm7xx: Add workaround for Delta Brick.
+
+Add 200us delay when send command to Delta Brick.
+
+Signed-off-by: Fran Hsu <fran.hsu@quanta.corp-partner.google.com>
+---
+ drivers/i2c/busses/i2c-npcm7xx.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/i2c/busses/i2c-npcm7xx.c b/drivers/i2c/busses/i2c-npcm7xx.c
+index ae84cb0868b1..6b9862c91768 100644
+--- a/drivers/i2c/busses/i2c-npcm7xx.c
++++ b/drivers/i2c/busses/i2c-npcm7xx.c
+@@ -2803,6 +2803,10 @@ static int npcm_i2c_master_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
+ 	bus->msgs = NULL;
+ 	bus->msgs_num = 0;
+ 
++	if ((0xb == bus->num) && (0x36 == ((bus->dest_addr) >> 1))) {
++		udelay(200);
++	}
++
+ 	spin_unlock_irqrestore(&bus->lock, flags);
+ 
+ 	// If nothing went wrong, return number of messages xferred.
+-- 
+2.21.0
+
